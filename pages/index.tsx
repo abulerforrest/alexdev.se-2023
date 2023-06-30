@@ -12,7 +12,7 @@ import Projects from "../src/components/templates/Projects";
 import About from "../src/components/templates/About";
 import Connect from "../src/components/templates/Connect";
 import Footer from "../src/components/templates/Footer";
-import { MutableRefObject, useRef } from "react";
+import { MutableRefObject, useEffect, useRef } from "react";
 
 export interface IPassRefs {
   passRefs: {
@@ -24,6 +24,8 @@ export interface IPassRefs {
   };
 }
 export interface IStore {
+  scrollY: number;
+  setScrollY: (newScrollY: number) => void;
   darkMode: boolean;
   setDarkMode: (state: { darkMode: boolean }) => void;
   navOpen: boolean;
@@ -31,8 +33,12 @@ export interface IStore {
 }
 
 export const alexDevStore = create<IStore>((set) => ({
+  scrollY: 0,
   darkMode: false,
   navOpen: false,
+
+  setScrollY: (newScrollY: number) => set({ scrollY: newScrollY }),
+
   setDarkMode: () =>
     set((state: { darkMode: boolean }) => ({ darkMode: !state.darkMode })),
   setNavOpen: () => set((state) => ({ navOpen: !state.navOpen })),
@@ -44,7 +50,7 @@ export const scrollTo = (ref: MutableRefObject<null>) =>
   });
 
 export default function Home() {
-  const { darkMode } = useStore(alexDevStore);
+  const { darkMode, scrollY, setScrollY } = useStore(alexDevStore);
 
   const initRefs = {
     homeRef: useRef(null),
@@ -53,6 +59,18 @@ export default function Home() {
     aboutRef: useRef(null),
     connectRef: useRef(null),
   };
+
+  const onScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [onScroll]);
 
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
