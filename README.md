@@ -1,6 +1,6 @@
 # alexdev.se (2023)
 
-![screenshot](alexdev-se-screenshot.png)
+![screenshot](alexdev-se-screenshot.png?raw=true)
 
 ## Getting Started
 
