@@ -1,0 +1,1 @@
+Atoms - Represent the basic building blocks of a design system. An example is a button or a text style.

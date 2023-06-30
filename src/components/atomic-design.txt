@@ -1,0 +1,5 @@
+Atoms - Represent the basic building blocks of a design system. An example is a button or a text style.
+Molecules - A group of atoms working together as a unit. Molecules are tangible UI elements. For example, a button and text field can be grouped to create a search form.
+Organisms - Atoms and molecules working together in a complex structure. A search field grouped with a navigation bar forms a header organism on a website.
+Templates - Page-level objects placing components into a layout that defines the content structure. For example, taking a header organism and placing it on a homepage template.
+Pages - Instances of templates that represent the final product.

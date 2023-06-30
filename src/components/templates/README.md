@@ -1,0 +1,1 @@
+Templates - Page-level objects placing components into a layout that defines the content structure. For example, taking a header organism and placing it on a homepage template.
