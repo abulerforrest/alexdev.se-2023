@@ -1,13 +1,16 @@
+import Link from "next/link";
+import { useStore } from "zustand";
+
 import { IoLogoTwitter } from "react-icons/io";
 import { IoLogoLinkedin } from "react-icons/io";
 import { IoLogoFacebook } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+
 import SectionHeading from "../molecules/SectionHeading";
-import Link from "next/link";
-import { useStore } from "zustand";
-import { IPassRefs } from "../../interfaces/refs/refs";
+
 import { alexDevStore } from "../../store/store";
-import { scrollTo } from "../../func";
+import { scrollToSection } from "../../func";
+import { IPassRefs } from "../../interfaces/refs/refs";
 
 const Connect = (props: { passRefs: IPassRefs }) => {
   const { scrollY } = useStore(alexDevStore);
@@ -53,7 +56,7 @@ const Connect = (props: { passRefs: IPassRefs }) => {
                 ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
                 : "",
             }}
-            onClick={() => scrollTo(props.passRefs.home)}
+            onClick={() => scrollToSection(props.passRefs.home)}
             className={`z-50 outline-none border-2 border-b-0 border-transparent bg-bone-white dark:bg-retro-black px-4 rounded-t-[20px] ${
               scrollFullfillment &&
               " animate-pop-up fixed active:border-opacity-50 active:border-retro-black"

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Logo, { LOGOVARIATIONS } from "../atoms/Logo";
 import { IoIosPerson, IoMdCall, IoMdMail } from "react-icons/io";
 import { IPassRefs } from "../../interfaces/refs/refs";
-import { scrollTo } from "../../func";
+import { scrollToSection } from "../../func";
 const spriteCommonStyle = "h-1 height w-full mb-0.5 rounded-md";
 
 const Footer = (props: { passRefs: IPassRefs }) => (
@@ -47,7 +47,7 @@ const Footer = (props: { passRefs: IPassRefs }) => (
                   href='#'
                   onClick={(event) => {
                     event.preventDefault();
-                    scrollTo(props.passRefs.home);
+                    scrollToSection(props.passRefs.home);
                   }}
                 >
                   Home
@@ -58,7 +58,7 @@ const Footer = (props: { passRefs: IPassRefs }) => (
                   href='#'
                   onClick={(event) => {
                     event.preventDefault();
-                    scrollTo(props.passRefs.code);
+                    scrollToSection(props.passRefs.code);
                   }}
                 >
                   Code
@@ -69,7 +69,7 @@ const Footer = (props: { passRefs: IPassRefs }) => (
                   href='#'
                   onClick={(event) => {
                     event.preventDefault();
-                    scrollTo(props.passRefs.projects);
+                    scrollToSection(props.passRefs.projects);
                   }}
                 >
                   Projects
@@ -80,7 +80,7 @@ const Footer = (props: { passRefs: IPassRefs }) => (
                   href='#'
                   onClick={(event) => {
                     event.preventDefault();
-                    scrollTo(props.passRefs.about);
+                    scrollToSection(props.passRefs.about);
                   }}
                 >
                   About
@@ -91,7 +91,7 @@ const Footer = (props: { passRefs: IPassRefs }) => (
                   href='#'
                   onClick={(event) => {
                     event.preventDefault();
-                    scrollTo(props.passRefs.connect);
+                    scrollToSection(props.passRefs.connect);
                   }}
                 >
                   Connect
@@ -105,7 +105,7 @@ const Footer = (props: { passRefs: IPassRefs }) => (
             <Logo
               href='/'
               onClick={(event) => {
-                scrollTo(props.passRefs.home);
+                scrollToSection(props.passRefs.home);
                 event.preventDefault();
               }}
               logoStyle={LOGOVARIATIONS.LIGHT}

@@ -18,6 +18,7 @@ export interface IPassRefs {
   passRefs: {
     homeRef: MutableRefObject<null>;
     codeRef: MutableRefObject<null>;
+    experiencesRef: MutableRefObject<null>;
     projectsRef: MutableRefObject<null>;
     aboutRef: MutableRefObject<null>;
     connectRef: MutableRefObject<null>;
@@ -35,6 +36,7 @@ export default function Home() {
   const initRefs = {
     homeRef: useRef(null),
     codeRef: useRef(null),
+    experiencesRef: useRef(null),
     projectsRef: useRef(null),
     aboutRef: useRef(null),
     connectRef: useRef(null),

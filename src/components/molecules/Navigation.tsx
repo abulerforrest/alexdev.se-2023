@@ -11,8 +11,14 @@ import SlideNav from "./SlideNav";
 
 const Navigation = (props: { passRefs: IPassRefs }) => {
   const store = useStore(alexDevStore);
-  const { navOpen, setNavOpen, setCurrentSection, currentSection } = store;
-  const [currentRef, setCurrentRef] = useState<MutableRefObject<null>>(null!);
+  const {
+    navOpen,
+    setNavOpen,
+    setCurrentSection,
+    currentRef,
+    setCurrentRef,
+    currentSection,
+  } = store;
 
   const ref = useRef(null);
   const router = useRouter();
@@ -51,7 +57,7 @@ const Navigation = (props: { passRefs: IPassRefs }) => {
   return (
     <>
       <div
-        className='justify-between items-center w-full hidden md:flex mb-5'
+        className='select-none justify-between items-center w-full hidden md:flex mb-5'
         id='navbar-sticky'
       >
         <span>

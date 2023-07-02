@@ -1,7 +1,10 @@
 import { IoLogoGameControllerB } from "react-icons/io";
 import TetrisButton from "../atoms/TetrisButton";
+import { IPassRefs } from "../../interfaces/refs/refs";
 
-const Play = () => {
+interface IPlayProps {}
+
+const Play = (props: IPlayProps) => {
   return (
     <>
       <div className='w-full bg-its-called-yellow mt-20 py-32 xl:h-[340px'>

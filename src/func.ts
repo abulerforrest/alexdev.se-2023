@@ -1,6 +1,6 @@
 import { MutableRefObject } from "react";
 
-export const scrollTo = (ref: MutableRefObject<null>) =>
+export const scrollToSection = (ref: MutableRefObject<null>) =>
   (ref.current as any)?.scrollIntoView({
     behavior: "smooth",
   });

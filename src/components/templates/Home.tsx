@@ -34,16 +34,18 @@ import {
 } from "../../../src/store/store";
 
 import React from "react";
-import dynamic from "next/dynamic";
 import { IPassRefs } from "../../interfaces/refs/refs";
 import { usePathname } from "next/navigation";
-import LoadingSpinner from "../atoms/LoadingSpinner";
 
 export default function Home() {
   const initRefs = {
     home: useRef(null),
-    code: useRef(null),
+    experiences: useRef(null),
+    techniques: useRef(null),
+    process: useRef(null),
+    play: useRef(null),
     projects: useRef(null),
+    code: useRef(null),
     about: useRef(null),
     connect: useRef(null),
   };
@@ -93,11 +95,19 @@ export default function Home() {
           <Top passRefs={initRefs} />
         </div>
         <div className='relative overflow-hidden z-[10]'>
-          <Presentation />
-          <Experiences />
-          <Techniques />
-          <Process />
-          <Play />
+          <Presentation passRefs={initRefs} />
+          <div ref={initRefs.experiences}>
+            <Experiences passRefs={initRefs} />
+          </div>
+          <div ref={initRefs.techniques}>
+            <Techniques />
+          </div>
+          <div ref={initRefs.process}>
+            <Process nextRef={initRefs.play} />
+          </div>
+          <div ref={initRefs.play}>
+            <Play />
+          </div>
           <div ref={initRefs.projects}>
             <Projects />
           </div>

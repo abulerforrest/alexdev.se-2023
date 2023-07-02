@@ -1,6 +1,17 @@
+import { useStore } from "zustand";
+import { IPassRefs } from "../../interfaces/refs/refs";
 import LaptopImage from "../atoms/LaptopImage";
+import { SECTION_TYPES, alexDevStore } from "../../store/store";
+import ArrowNextSection from "../atoms/ArrowNextSection";
+import { scrollToSection } from "../../func";
+import { MutableRefObject } from "react";
 
-const Process = () => {
+interface IProcessProps {
+  nextRef: MutableRefObject<null>;
+}
+
+const Process = (props: IProcessProps) => {
+  const { setCurrentRef } = useStore(alexDevStore);
   return (
     <div className='grid grid-cols-1 md:grid-cols-2'>
       <div className='w-full flex pt-20 xl:ml-[80px]'>
@@ -27,6 +38,17 @@ const Process = () => {
       </div>
       <div className='flex order-first md:order-last justify-center items-center pt-4'>
         <LaptopImage />
+      </div>
+      <div className='flex justify-center md:col-span-2 sm:col-span-2 col-span-2 lg:col-span-2 order-last p-5'>
+        <ArrowNextSection
+          onClick={(event) => {
+            event.preventDefault();
+            setCurrentRef(props.nextRef);
+            scrollToSection(props.nextRef);
+          }}
+          overrideColor='its-called-yellow'
+          inverted
+        />
       </div>
     </div>
   );
