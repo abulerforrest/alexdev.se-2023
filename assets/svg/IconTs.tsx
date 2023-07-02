@@ -1,6 +1,6 @@
 import { useStore } from "zustand";
 import { ISvgIconProps } from "../../src/components/atoms/TechniquesIcon";
-import { alexDevStore } from "../../pages";
+import { alexDevStore } from "../../src/store/store";
 
 const IconTs = (props: ISvgIconProps) => {
   const { darkMode } = useStore(alexDevStore);

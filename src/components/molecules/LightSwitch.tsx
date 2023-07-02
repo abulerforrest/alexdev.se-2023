@@ -1,6 +1,7 @@
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { alexDevStore } from "../../../pages";
+
 import { useStore } from "zustand";
+import { alexDevStore } from "../../store/store";
 
 const LightSwitch = () => {
   const store = useStore(alexDevStore);

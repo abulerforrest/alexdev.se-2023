@@ -1,9 +1,9 @@
-import { IoIosClose, IoIosMenu } from "react-icons/io";
+import { IoIosMenu } from "react-icons/io";
 import { useStore } from "zustand";
-import { alexDevStore } from "../../../pages";
 import { TfiClose } from "react-icons/tfi";
+import { alexDevStore } from "../../store/store";
 
-const NavigationButton = ({ ref }: any) => {
+const NavigationButton = () => {
   const store = useStore(alexDevStore);
   const { navOpen, setNavOpen } = store;
   return (

@@ -1,1 +1,0 @@
-Pages - Instances of templates that represent the final product.

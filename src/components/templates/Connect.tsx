@@ -3,16 +3,18 @@ import { IoLogoLinkedin } from "react-icons/io";
 import { IoLogoFacebook } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import SectionHeading from "../molecules/SectionHeading";
-import { IPassRefs, alexDevStore, scrollTo } from "../../../pages";
 import Link from "next/link";
 import { useStore } from "zustand";
+import { IPassRefs } from "../../interfaces/refs/refs";
+import { alexDevStore } from "../../store/store";
+import { scrollTo } from "../../func";
 
-const Connect = (props: IPassRefs) => {
+const Connect = (props: { passRefs: IPassRefs }) => {
   const { scrollY } = useStore(alexDevStore);
   const scrollFullfillment: boolean =
     scrollY > 200 &&
-    scrollY < (props.passRefs.connectRef as any).current.offsetTop - 380 &&
-    scrollY <= (props.passRefs.connectRef as any).current.offsetTop;
+    scrollY < (props.passRefs.connect as any).current.offsetTop - 380 &&
+    scrollY <= (props.passRefs.connect as any).current.offsetTop;
 
   return (
     <>
@@ -51,8 +53,8 @@ const Connect = (props: IPassRefs) => {
                 ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
                 : "",
             }}
-            onClick={() => scrollTo(props.passRefs.homeRef)}
-            className={`outline-none border-2 border-b-0 border-transparent bg-bone-white dark:bg-retro-black px-4 rounded-t-[20px] ${
+            onClick={() => scrollTo(props.passRefs.home)}
+            className={`z-50 outline-none border-2 border-b-0 border-transparent bg-bone-white dark:bg-retro-black px-4 rounded-t-[20px] ${
               scrollFullfillment &&
               " animate-pop-up fixed active:border-opacity-50 active:border-retro-black"
             } bottom-0 flex items-center gap-2 text-retro-black dark:text-bone-white uppercase font-eurostile text-go2top-text-sm sm:text-go2top-text-sm md:text-go2top-text-md xl:text-go2top-text-xl`}

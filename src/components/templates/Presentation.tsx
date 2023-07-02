@@ -4,7 +4,7 @@ import PopupImageDark from "../atoms/PopupImageDark";
 import ActionButtons from "../molecules/ActionButtons";
 import LightSwitch from "../molecules/LightSwitch";
 import WelcomeText from "../molecules/WelcomeText";
-import { alexDevStore } from "../../../pages";
+import { alexDevStore } from "../../store/store";
 
 const Presentation = () => {
   const { darkMode } = useStore(alexDevStore);

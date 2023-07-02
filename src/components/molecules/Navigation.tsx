@@ -1,18 +1,26 @@
 import { useStore } from "zustand";
-import { IPassRefs, alexDevStore, scrollTo } from "../../../pages";
 import Logo, { LOGOVARIATIONS } from "../atoms/Logo";
 import MenuItem from "../atoms/MenuItem";
 import NavigationButton from "../atoms/NavigationButton";
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { IPassRefs } from "../../interfaces/refs/refs";
+import { ISections, SECTION_TYPES, alexDevStore } from "../../store/store";
+import { useRouter } from "next/navigation";
+import useScrollTo from "../../hooks/useScrollTo";
+import SlideNav from "./SlideNav";
 
-const Navigation = (props: IPassRefs) => {
+const Navigation = (props: { passRefs: IPassRefs }) => {
   const store = useStore(alexDevStore);
-  const { navOpen, setNavOpen } = store;
+  const { navOpen, setNavOpen, setCurrentSection, currentSection } = store;
+  const [currentRef, setCurrentRef] = useState<MutableRefObject<null>>(null!);
 
   const ref = useRef(null);
+  const router = useRouter();
+
+  useScrollTo(currentRef);
 
   useEffect(() => {
-    const handleClick = (event: any) => {
+    const handleClickOutside = (event: any) => {
       if (ref.current && !(ref.current as any).contains(event.target)) {
         if (navOpen) {
           setNavOpen({ navOpen: false });
@@ -20,51 +28,99 @@ const Navigation = (props: IPassRefs) => {
       }
     };
 
-    document.addEventListener("click", handleClick, true);
+    document.addEventListener("click", handleClickOutside, true);
 
     return () => {
-      document.removeEventListener("click", handleClick, true);
+      document.removeEventListener("click", handleClickOutside, true);
     };
   }, [ref, navOpen]);
 
-  const handleNavClick = (ref: MutableRefObject<null>) => {
-    scrollTo(ref);
+  const handleNavClick = (
+    clickRef: MutableRefObject<null>,
+    route: string,
+    event: React.MouseEvent<HTMLLIElement>,
+    section: ISections
+  ) => {
+    event.preventDefault();
+    setCurrentRef(clickRef);
+    router.push(`/${route}`);
     setNavOpen({ navOpen: !navOpen });
+    setCurrentSection(section);
   };
 
   return (
     <>
       <div
-        className='justify-between items-center w-full hidden md:flex '
+        className='justify-between items-center w-full hidden md:flex mb-5'
         id='navbar-sticky'
       >
         <span>
           <Logo href='/' logoStyle={LOGOVARIATIONS.DARK} />
         </span>
-        <span className='items-center p-5'>
-          <ul className='flex justify-center items-center gap-4'>
+        <span className='items-center p-5 xl:pr-[48px]'>
+          <ul className={`flex justify-center items-center gap-4 h-10 mt-5`}>
             <MenuItem
-              onClick={() => handleNavClick(props.passRefs.homeRef)}
+              onClick={(event) =>
+                handleNavClick(
+                  props.passRefs.home,
+                  "home",
+                  event,
+                  SECTION_TYPES.HOME
+                )
+              }
+              isCurrent={currentSection === SECTION_TYPES.HOME}
               label='Home'
               itemColor='#eb7a4d'
             />
             <MenuItem
-              onClick={() => handleNavClick(props.passRefs.codeRef)}
-              label='Code'
-              itemColor='#487AA0'
-            />
-            <MenuItem
-              onClick={() => handleNavClick(props.passRefs.projectsRef)}
+              onClick={(event) =>
+                handleNavClick(
+                  props.passRefs.projects,
+                  "projects",
+                  event,
+                  SECTION_TYPES.PROJECTS
+                )
+              }
+              isCurrent={currentSection === SECTION_TYPES.PROJECTS}
               label='Projects'
               itemColor='#D7AE3D'
             />
             <MenuItem
-              onClick={() => handleNavClick(props.passRefs.aboutRef)}
+              onClick={(event) =>
+                handleNavClick(
+                  props.passRefs.code,
+                  "code",
+                  event,
+                  SECTION_TYPES.CODE
+                )
+              }
+              isCurrent={currentSection === SECTION_TYPES.CODE}
+              label='Code'
+              itemColor='#487AA0'
+            />
+            <MenuItem
+              onClick={(event) =>
+                handleNavClick(
+                  props.passRefs.about,
+                  "about",
+                  event,
+                  SECTION_TYPES.ABOUT
+                )
+              }
+              isCurrent={currentSection === SECTION_TYPES.ABOUT}
               label='About'
               itemColor='#e1614b'
             />
             <MenuItem
-              onClick={() => handleNavClick(props.passRefs.connectRef)}
+              onClick={(event) =>
+                handleNavClick(
+                  props.passRefs.connect,
+                  "connect",
+                  event,
+                  SECTION_TYPES.CONNECT
+                )
+              }
+              isCurrent={currentSection === SECTION_TYPES.CONNECT}
               label='Connect'
               itemColor='#e1614b'
             />
@@ -76,57 +132,7 @@ const Navigation = (props: IPassRefs) => {
         ref={ref}
       >
         <NavigationButton />
-        <nav
-          style={{ boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }}
-          className={`transform duration-300 transition-all dark:bg-retro-black ${
-            navOpen && "w-full sm:w-1/2"
-          } bg-bone-white flex fixed z-20 h-full ${
-            !navOpen && "w-0 opacity-0"
-          }`}
-        >
-          <ul className=' py-5 pl-10 flex-col w-[100%]'>
-            <li
-              className={`w-min cursor-pointer opacity-0 ${
-                navOpen && "mb-3 animate-slide-from-right animation-delay-100"
-              } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-              onClick={() => handleNavClick(props.passRefs.homeRef)}
-            >
-              Home
-            </li>
-            <li
-              className={`w-min cursor-pointer opacity-0 ${
-                navOpen && "mb-3 animate-slide-from-right animation-delay-300"
-              } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-              onClick={() => handleNavClick(props.passRefs.codeRef)}
-            >
-              Code
-            </li>
-            <li
-              className={`w-min cursor-pointer opacity-0 ${
-                navOpen && "mb-3 animate-slide-from-right animation-delay-500"
-              } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-              onClick={() => handleNavClick(props.passRefs.projectsRef)}
-            >
-              Projects
-            </li>
-            <li
-              className={`w-min cursor-pointer opacity-0 ${
-                navOpen && "mb-3 animate-slide-from-right animation-delay-700"
-              } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-              onClick={() => handleNavClick(props.passRefs.aboutRef)}
-            >
-              About
-            </li>
-            <li
-              className={`w-min cursor-pointer opacity-0 ${
-                navOpen && "animate-slide-from-right animation-delay-900"
-              } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-              onClick={() => handleNavClick(props.passRefs.connectRef)}
-            >
-              Connect
-            </li>
-          </ul>
-        </nav>
+        <SlideNav passRefs={props.passRefs} />
       </div>
     </>
   );

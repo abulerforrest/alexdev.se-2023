@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
@@ -98,8 +99,8 @@ module.exports = {
       "connect-text-sm": ["29px", "38px"] /* 29px */,
 
       "go2top-text-xl": ["24px", "61px"] /* 24px */,
-      "go2top-text-md": ["21px", "54px"] /* 21px */,
-      "go2top-text-sm": ["19px", "50px"] /* 19px */,
+      "go2top-text-md": ["20px", "54px"] /* 20px */,
+      "go2top-text-sm": ["18px", "50px"] /* 18px */,
 
       "footer-heading-xl": ["24px", "61px"] /* 24px */,
       "footer-heading-md": ["21px", "54px"] /* 21px */,
