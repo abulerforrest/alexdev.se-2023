@@ -65,7 +65,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
               <div className='flex-col text-bone-white font-kabel font-black uppercase text-footer-navitem-sm'>
                 <div>
                   <Link
-                    href='#'
+                    href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
                         props.passRefs.home,
@@ -80,7 +80,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                 </div>
                 <div>
                   <Link
-                    href='#'
+                    href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
                         props.passRefs.projects,
@@ -95,7 +95,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                 </div>
                 <div>
                   <Link
-                    href='#'
+                    href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
                         props.passRefs.code,
@@ -110,7 +110,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                 </div>
                 <div>
                   <Link
-                    href='#'
+                    href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
                         props.passRefs.about,
@@ -125,7 +125,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                 </div>
                 <div>
                   <Link
-                    href='#'
+                    href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
                         props.passRefs.connect,

@@ -1,9 +1,7 @@
-import { useEffect } from "react";
-import { alexDevStore } from "../../store/store";
-import { useStore } from "zustand";
+import { useEffect, useState } from "react";
 
 const PopupImage = () => {
-  const { setLoc, loc } = useStore(alexDevStore);
+  const [loc, setLoc] = useState("");
 
   useEffect(() => {
     setLoc(
