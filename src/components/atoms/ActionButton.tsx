@@ -1,19 +1,22 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 
 interface IActionButton {
   text: string;
   icon: ReactNode;
   className: string;
-  onClick?: () => void;
+  href: string | undefined;
 }
 
 const ActionButton = (props: IActionButton) => {
-  const { className, text, icon, onClick } = props;
+  const { className, text, icon, href } = props;
 
   return (
-    <button className={className} onClick={onClick}>
-      {text} <span>{icon}</span>
-    </button>
+    <Link href={href || "#"} target='_blank'>
+      <button className={className}>
+        {text} <span>{icon}</span>
+      </button>
+    </Link>
   );
 };
 

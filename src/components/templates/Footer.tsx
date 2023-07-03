@@ -178,7 +178,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                 className={`my-[0.15rem] animate-grow-from-left bg-startling-blues ${spriteCommonStyle}`}
               />
             </div>
-            <div className='select-none whitespace-nowrap text-bone-white font-eurostile text-footer-copyright-text-sm sm:text-footer-copyright-text-sm md:text-footer-copyright-text-md xl:text-footer-text-copyright-xl'>
+            <div className='cursor-default select-none whitespace-nowrap text-bone-white font-eurostile text-footer-copyright-text-sm sm:text-footer-copyright-text-sm md:text-footer-copyright-text-md xl:text-footer-text-copyright-xl'>
               Design and code by Alexander Forrest © 2023 • alexdev™
             </div>
           </div>
