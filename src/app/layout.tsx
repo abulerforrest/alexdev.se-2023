@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Home from "../components/templates/Home";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://alexdev.se"),
   title: "alexdev.se",
   description: "A portfolio site in multicolor - by Alexander Forrest.",
   applicationName: "alexdev.se",
@@ -32,7 +33,6 @@ export const metadata: Metadata = {
   publisher: "Alexander Forrest",
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
-  alternates: { canonical: "https://alexdev.se" },
   twitter: {
     card: "summary_large_image",
     site: "@alexdev",
