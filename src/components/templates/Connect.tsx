@@ -62,7 +62,7 @@ const Connect = (props: { passRefs: IPassRefs }) => {
               " animate-pop-up fixed active:border-opacity-50 active:border-retro-black"
             } bottom-0 flex items-center gap-2 text-retro-black dark:text-bone-white uppercase font-eurostile text-go2top-text-sm sm:text-go2top-text-sm md:text-go2top-text-md xl:text-go2top-text-xl`}
           >
-            Go To Top <IoIosArrowUp />
+            Scroll To Top <IoIosArrowUp />
           </button>
         </div>
       </div>

@@ -50,7 +50,6 @@ const Navigation = (props: { passRefs: IPassRefs }) => {
     event.preventDefault();
     setCurrentRef(clickRef);
     router.push(`/${route}`);
-    setNavOpen({ navOpen: !navOpen });
     setCurrentSection(section);
   };
 

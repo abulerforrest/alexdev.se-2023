@@ -46,7 +46,7 @@ const Process = (props: IProcessProps) => {
             setCurrentRef(props.nextRef);
             scrollToSection(props.nextRef);
           }}
-          overrideColor='its-called-yellow'
+          overrideColor='text-its-called-yellow hover:border-its-called-yellow'
           inverted
         />
       </div>
