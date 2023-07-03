@@ -2,7 +2,6 @@ import Link from "next/link";
 import Logo, { LOGOVARIATIONS } from "../atoms/Logo";
 import { IoIosPerson, IoMdCall, IoMdMail } from "react-icons/io";
 import { IPassRefs } from "../../interfaces/refs/refs";
-import { scrollToSection } from "../../func";
 import { MutableRefObject } from "react";
 import { ISections, SECTION_TYPES, alexDevStore } from "../../store/store";
 import { useStore } from "zustand";
@@ -149,7 +148,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                 onClick={(event) => {
                   handleFooterNavClick(
                     props.passRefs.home,
-                    "home",
+                    "",
                     event,
                     SECTION_TYPES.HOME
                   );

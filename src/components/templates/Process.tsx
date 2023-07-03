@@ -1,7 +1,6 @@
 import { useStore } from "zustand";
-import { IPassRefs } from "../../interfaces/refs/refs";
 import LaptopImage from "../atoms/LaptopImage";
-import { SECTION_TYPES, alexDevStore } from "../../store/store";
+import { alexDevStore } from "../../store/store";
 import ArrowNextSection from "../atoms/ArrowNextSection";
 import { scrollToSection } from "../../func";
 import { MutableRefObject } from "react";

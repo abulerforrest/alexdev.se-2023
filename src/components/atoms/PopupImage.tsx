@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import LoadingSpinner from "./LoadingSpinner";
+import { useEffect } from "react";
+import { alexDevStore } from "../../store/store";
+import { useStore } from "zustand";
 
 const PopupImage = () => {
-  const [loc, setLoc] = useState("");
+  const { setLoc, loc } = useStore(alexDevStore);
 
   useEffect(() => {
     setLoc(

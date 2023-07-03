@@ -5,19 +5,8 @@ import { MutableRefObject, useEffect, useRef } from "react";
 import { useStore } from "zustand";
 
 import Top from "../../../src/components/templates/Top";
-
 import Presentation from "./Presentation";
 import Experiences from "./Experiences";
-
-// const Techniques = dynamic(() => import("./Techniques"), {
-//   ssr: false,
-//   loading: () => <LoadingSpinner />,
-// });
-
-// const Play = dynamic(() => import("./Play"), {
-//   ssr: false,
-// });
-
 import Techniques from "./Techniques";
 import Play from "./Play";
 import Process from "./Process";

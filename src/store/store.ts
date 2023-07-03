@@ -14,11 +14,13 @@ export const SECTION_TYPES = {
 export type ISections = (typeof SECTION_TYPES)[keyof typeof SECTION_TYPES];
 
 export interface IStore {
+  loc: string;
   currentRef: MutableRefObject<null>;
   currentSection: ISections;
   scrollY: number;
   darkMode: boolean;
   navOpen: boolean;
+  setLoc: (loc: string) => void;
   setCurrentRef: (currentRef: MutableRefObject<null>) => void;
   setCurrentSection: (currentSection: ISections) => void;
   setScrollY: (newScrollY: number) => void;
@@ -27,12 +29,14 @@ export interface IStore {
 }
 
 export const alexDevStore = create<IStore>((set) => ({
+  loc: "",
   currentRef: null!,
   currentSection: null!,
   scrollY: 0,
   darkMode: false,
   navOpen: false,
 
+  setLoc: (loc: string) => set({ loc: loc }),
   setCurrentRef: (currentRef: MutableRefObject<null>) =>
     set({ currentRef: currentRef }),
   setCurrentSection: (currentSection: ISections) =>
