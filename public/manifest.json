@@ -1,0 +1,20 @@
+{
+  "name": "alexdev.se",
+  "short_name": "alexdev",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FBFBF7",
+  "description": "A portfolio site in multicolor - by Alexander Forrest.",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
