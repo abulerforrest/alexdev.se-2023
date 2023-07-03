@@ -38,5 +38,5 @@ next-env.d.ts
 
 .package-lock
 .firebaserc
-.firabase
-.firebase.json
+.firebase
+firebase.json
