@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   icons: ["https://alexdev.se/icon.png", "https://alexdev.se/favicon.ico"],
   manifest: "https://alexdev.se/manifest.json",
   openGraph: {
+    type: "website",
     locale: "en",
     countryName: "Sweden",
     emails: "alex@alexdev.se",
