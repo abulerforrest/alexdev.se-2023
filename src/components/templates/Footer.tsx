@@ -11,7 +11,7 @@ const spriteCommonStyle = "h-1 height w-full mb-0.5 rounded-md";
 
 const Footer = (props: { passRefs: IPassRefs }) => {
   const store = useStore(alexDevStore);
-  const { navOpen, setNavOpen, setCurrentSection, setCurrentRef } = store;
+  const { setCurrentSection, setCurrentRef } = store;
 
   const router = useRouter();
 
@@ -70,7 +70,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                     onClick={(event) => {
                       handleFooterNavClick(
                         props.passRefs.home,
-                        "home",
+                        "",
                         event,
                         SECTION_TYPES.HOME
                       );
@@ -129,7 +129,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                     href='#'
                     onClick={(event) => {
                       handleFooterNavClick(
-                        props.passRefs.home,
+                        props.passRefs.connect,
                         "connect",
                         event,
                         SECTION_TYPES.CONNECT
@@ -147,8 +147,12 @@ const Footer = (props: { passRefs: IPassRefs }) => {
               <Logo
                 href='/'
                 onClick={(event) => {
-                  scrollToSection(props.passRefs.home);
-                  event.preventDefault();
+                  handleFooterNavClick(
+                    props.passRefs.home,
+                    "home",
+                    event,
+                    SECTION_TYPES.HOME
+                  );
                 }}
                 logoStyle={LOGOVARIATIONS.LIGHT}
               />

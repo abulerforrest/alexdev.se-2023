@@ -1,3 +1,5 @@
+"use client";
+import Head from "../src/components/atoms/Head";
 import Home from "../src/components/templates/Home";
 
 export default function RootLayout({
@@ -7,11 +9,10 @@ export default function RootLayout({
 }) {
   return (
     <html>
+      <Head />
       <body>
-        <section>
-          <Home />
-          {children}
-        </section>
+        <Home />
+        {children}
       </body>
     </html>
   );

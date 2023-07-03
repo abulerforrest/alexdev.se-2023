@@ -58,7 +58,7 @@ export default function Home() {
 
   useEffect(() => {
     let section: ISections = SECTION_TYPES.HOME;
-    if (pathname === "home") {
+    if (pathname === "") {
       section = SECTION_TYPES.HOME;
     } else if (pathname === "code") {
       section = SECTION_TYPES.CODE;
@@ -89,40 +89,40 @@ export default function Home() {
   }, [onScroll]);
 
   return (
-    <div className={`${darkMode ? "dark" : ""}`}>
-      <main className='transition-all duration-300 bg-bone-white dark:bg-retro-black'>
-        <div ref={initRefs.home}>
+    <main className={`${darkMode ? "dark" : ""}`}>
+      <section className='transition-all duration-300 bg-bone-white dark:bg-retro-black'>
+        <section ref={initRefs.home}>
           <Top passRefs={initRefs} />
-        </div>
-        <div className='relative overflow-hidden z-[10]'>
+        </section>
+        <section className='relative overflow-hidden z-[10]'>
           <Presentation passRefs={initRefs} />
-          <div ref={initRefs.experiences}>
+          <section ref={initRefs.experiences}>
             <Experiences passRefs={initRefs} />
-          </div>
-          <div ref={initRefs.techniques}>
+          </section>
+          <section ref={initRefs.techniques}>
             <Techniques />
-          </div>
-          <div ref={initRefs.process}>
+          </section>
+          <section ref={initRefs.process}>
             <Process nextRef={initRefs.play} />
-          </div>
-          <div ref={initRefs.play}>
+          </section>
+          <section ref={initRefs.play}>
             <Play />
-          </div>
-          <div ref={initRefs.projects}>
+          </section>
+          <section ref={initRefs.projects}>
             <Projects />
-          </div>
-          <div ref={initRefs.code}>
+          </section>
+          <section ref={initRefs.code}>
             <Code />
-          </div>
-          <div ref={initRefs.about}>
+          </section>
+          <section ref={initRefs.about}>
             <About />
-          </div>
-          <div ref={initRefs.connect}>
+          </section>
+          <section ref={initRefs.connect}>
             <Connect passRefs={initRefs} />
-          </div>
+          </section>
           <Footer passRefs={initRefs} />
-        </div>
-      </main>
-    </div>
+        </section>
+      </section>
+    </main>
   );
 }

@@ -68,7 +68,7 @@ const Navigation = (props: { passRefs: IPassRefs }) => {
               onClick={(event) =>
                 handleNavClick(
                   props.passRefs.home,
-                  "home",
+                  "",
                   event,
                   SECTION_TYPES.HOME
                 )

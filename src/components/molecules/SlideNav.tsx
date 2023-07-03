@@ -19,7 +19,7 @@ const SlideNav = (props: ISlideNav) => {
 
   useScrollTo(currentRef);
 
-  const handleNavClick = (
+  const handleSlideNavClick = (
     clickRef: MutableRefObject<null>,
     route: string,
     event: React.MouseEvent<HTMLLIElement>,
@@ -47,9 +47,9 @@ const SlideNav = (props: ISlideNav) => {
             navOpen && "mb-3 animate-slide-from-right animation-delay-100"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
-            handleNavClick(
+            handleSlideNavClick(
               props.passRefs.home,
-              "home",
+              "",
               event,
               SECTION_TYPES.HOME
             )
@@ -64,7 +64,7 @@ const SlideNav = (props: ISlideNav) => {
             navOpen && "mb-3 animate-slide-from-right animation-delay-500"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
-            handleNavClick(
+            handleSlideNavClick(
               props.passRefs.projects,
               "projects",
               event,
@@ -81,7 +81,7 @@ const SlideNav = (props: ISlideNav) => {
             navOpen && "mb-3 animate-slide-from-right animation-delay-300"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
-            handleNavClick(
+            handleSlideNavClick(
               props.passRefs.code,
               "code",
               event,
@@ -98,7 +98,7 @@ const SlideNav = (props: ISlideNav) => {
             navOpen && "mb-3 animate-slide-from-right animation-delay-700"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
-            handleNavClick(
+            handleSlideNavClick(
               props.passRefs.about,
               "about",
               event,
@@ -115,7 +115,7 @@ const SlideNav = (props: ISlideNav) => {
             navOpen && "animate-slide-from-right animation-delay-900"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
-            handleNavClick(
+            handleSlideNavClick(
               props.passRefs.connect,
               "connect",
               event,
