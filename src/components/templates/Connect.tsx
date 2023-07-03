@@ -26,11 +26,11 @@ const Connect = (props: { passRefs: IPassRefs }) => {
         <div className='lg:pt-20 pt-10 mx-8 lg:mx-20 sm:mx-14 lg:px-32 font-kabel text-retro-black font-black dark:text-bone-white text-connect-text-sm sm:text-connect-text-sm md:text-connect-text-md xl:text-connect-text-xl'>
           <p className='mb-7 text-center'>
             Ready to bring your project to life with an engaging and responsive
-            user experience? Look no further! Let's collaborate to create
+            user experience? Look no further! Let&apos;s collaborate to create
             something amazing. As a skilled frontend developer with expertise in
             Next.js, Angular, HTML, CSS, and JavaScript, I specialize in
-            captivating and delightful user experiences. Don't wait - let's
-            connect and turn your ideas into reality!
+            captivating and delightful user experiences. Don&apos;t wait -
+            let&apos;s connect and turn your ideas into reality!
           </p>
         </div>
         <div className='flex p-10 justify-center'>

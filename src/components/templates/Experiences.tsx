@@ -1,4 +1,3 @@
-import { IoIosArrowDropdownCircle } from "react-icons/io";
 import ExperienceBlob from "../atoms/ExperienceBlob";
 import ExperienceFlowBox from "../molecules/ExperienceFlowBox";
 import { SECTION_TYPES, alexDevStore } from "../../store/store";
@@ -12,7 +11,7 @@ interface IExperiences {
 }
 
 const Experiences = (props: IExperiences) => {
-  const { darkMode, setCurrentRef, setCurrentSection } = useStore(alexDevStore);
+  const { setCurrentRef, setCurrentSection } = useStore(alexDevStore);
 
   return (
     <>
@@ -20,8 +19,8 @@ const Experiences = (props: IExperiences) => {
         <div className='flex justify-center max-w-[1300px] lg:max-w-[1600px] lg:px-[180px] md:px-[80px] px-[40px] items-center text-quote-sm md:text-quote-md lg:text-quote-lg font-kabel font-black'>
           <div className='flex-col justify-center items-centerw-fit'>
             <div className='opacity-90 flex items-center justify-center text-center'>
-              "I’ve experienced startups, global teams in Hosting, Ad-Tech, and
-              Investor Relations."
+              &quot;I&apos;ve experienced startups, global teams in Hosting,
+              Ad-Tech, and Investor Relations.&quot;
             </div>
             <div className='flex items-center justify-center mt-10'>
               <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-3 gap-0 items-center justify-center w-full'>
@@ -39,11 +38,11 @@ const Experiences = (props: IExperiences) => {
                       <>
                         <div>
                           As a self-taught full-stack developer with a strong
-                          grounding in JavaScript, PHP, and C++, I've
+                          grounding in JavaScript, PHP, and C++, I&apos;ve
                           encountered a wide range of coding challenges.
                         </div>
                         <div className='mt-4'>
-                          That's why the transition to Node.js and popular
+                          That&apos;s why the transition to Node.js and popular
                           frameworks like React, Next.js, and Angular was a
                           natural next step for me.
                         </div>
@@ -62,7 +61,7 @@ const Experiences = (props: IExperiences) => {
                           improvements, and automation.
                         </div>
                         <div className='mt-4'>
-                          To me, it's exciting to simplify the user flow,
+                          To me, it&apos;s exciting to simplify the user flow,
                           minimize the number of clicks, and make the overall
                           user experience simple and intuitive, rather than
                           cluttered and difficult to navigate.

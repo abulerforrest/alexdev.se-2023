@@ -22,7 +22,7 @@ const Play = (props: IPlayProps) => {
               />
             }
             onClick={() => {
-              console.log("clicked!");
+              console.log("Clicked Tetris button! Upcoming feature.");
             }}
           />
         </div>

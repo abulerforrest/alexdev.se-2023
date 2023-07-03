@@ -1,6 +1,7 @@
 interface IExperienceBlob {
   label: string;
-  text: React.ReactNode;
+  text?: React.ReactNode;
+  years?: string | number;
 }
 
 const ExperienceBlob = (props: IExperienceBlob) => {

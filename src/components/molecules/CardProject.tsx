@@ -1,8 +1,10 @@
 import React from "react";
 import { BsArrowUpRight } from "react-icons/bs";
+import Image from "next/image";
 
-import WebIllustration from "../../../assets/png/web-illustration-test.png";
+import WebIllustration from "../../../public/static/web-illustration-test.png";
 import Tag from "../atoms/Tag";
+import Link from "next/link";
 
 interface ITag {
   title: string;
@@ -21,9 +23,15 @@ const CardProject = (props: ICardProject) => {
         <div className='py-5 font-kabel font-black text-project-heading-sm sm:text-project-heading-sm md:xl:text-project-heading-md xl:text-project-heading-xl text-retro-black'>
           <a href='#'>{props.title}</a>
         </div>
-        <a href='#'>
-          <img className='rounded-xl' src={WebIllustration.src} alt='' />
-        </a>
+        <Link href='#'>
+          <Image
+            className='rounded-xl w-full h-full'
+            src={WebIllustration}
+            width={500}
+            height={500}
+            alt=''
+          />
+        </Link>
         <div className='py-5'>
           <div className='duration-600 z-20 mb-6 flex flex-wrap font-eurostile rounded-lg dark:text-bone-white text-retro-black items-center'>
             {props.desc}

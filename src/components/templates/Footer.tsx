@@ -54,8 +54,8 @@ const Footer = (props: { passRefs: IPassRefs }) => {
               <Link href='tel:+46739859190'>+46(0)739859190</Link>
             </div>
             <div className='select-none pt-4 text-bone-white text-footer-reachout-text sm:text-footer-reachout-text-sm md:text-footer-reachout-text-md xl:text-footer-reachout-text-xl'>
-              Feel free to reach out, and I'll do my best to respond promptly
-              and effectively.
+              Feel free to reach out, and I&apos;ll do my best to respond
+              promptly and effectively.
             </div>
           </div>
           <div className='flex px-10'>

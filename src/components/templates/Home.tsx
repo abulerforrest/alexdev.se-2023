@@ -50,7 +50,7 @@ export default function Home() {
     connect: useRef(null),
   };
 
-  const pathname = usePathname().replace("/", "");
+  const pathname = usePathname()!.replace("/", "");
   const currentRef: MutableRefObject<any> =
     initRefs[pathname as keyof IPassRefs];
 
@@ -74,19 +74,19 @@ export default function Home() {
     if (currentRef && currentRef.current) {
       currentRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [pathname]);
-
-  const onScroll = () => {
-    setScrollY(window.scrollY);
-  };
+  }, [pathname, currentRef, setCurrentSection]);
 
   useEffect(() => {
+    const onScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
     window.addEventListener("scroll", onScroll);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, [onScroll]);
+  }, [setScrollY]);
 
   return (
     <main className={`${darkMode ? "dark" : ""}`}>

@@ -175,8 +175,8 @@ const CardCode = (props: ICardCode) => {
               </button>
             </div>
             <div className='duration-600 text-center z-20 mb-6 mx-12 flex flex-wrap font-eurostile rounded-lg dark:text-bone-white text-retro-black justify-center items-center'>
-              It's a step-by-step process, with each piece coming together to
-              create a cohesive whole.
+              It&apos;s a step-by-step process, with each piece coming together
+              to create a cohesive whole.
             </div>
           </div>
         </div>

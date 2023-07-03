@@ -39,7 +39,7 @@ const Navigation = (props: { passRefs: IPassRefs }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  }, [ref, navOpen]);
+  }, [ref, navOpen, setNavOpen]);
 
   const handleNavClick = (
     clickRef: MutableRefObject<null>,

@@ -17,7 +17,7 @@ const ActionButtons = () => {
             />
           }
           onClick={() => {
-            console.log("clicked!");
+            console.log("Clicked Resume button! Upcoming feature.");
           }}
         />
       </span>

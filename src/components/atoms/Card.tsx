@@ -1,9 +1,10 @@
+import Image from "next/image";
 import Code from "../../../assets/code.png";
 
 const Card = () => {
   return (
     <div className='max-w-sm rounded-xl overflow-hidden shadow-lg'>
-      <img className='w-full' src={Code.src} alt='Sunset in the mountains' />
+      <Image className='w-full' src={Code.src} alt='Sunset in the mountains' />
       <div className='px-6 py-4'>
         <div className='font-bold text-2xl mb-2 font-kabel'>
           Javascript Tetris
