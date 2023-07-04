@@ -5,6 +5,8 @@ import Image from "next/image";
 import WebIllustration from "../../../public/static/web-illustration-test.png";
 import Tag from "../atoms/Tag";
 import Link from "next/link";
+import { SECTION_TYPES, alexDevStore } from "../../store/store";
+import { useStore } from "zustand";
 
 interface ITag {
   title: string;
@@ -17,19 +19,25 @@ interface ICardProject {
 }
 
 const CardProject = (props: ICardProject) => {
+  const store = useStore(alexDevStore);
+  const { setCurrentSection, setCurrentRef, refs } = store;
   return (
     <div>
       <div className='p-5 max-w-lg sm:max-w-3xl md:max-w-md lg:max-w-md rounded-lg'>
         <div className='py-5 font-kabel font-black text-project-heading-sm sm:text-project-heading-sm md:xl:text-project-heading-md xl:text-project-heading-xl text-retro-black'>
-          <a href='#'>{props.title}</a>
+          <a href='/projects/vanilla-sky'>{props.title}</a>
         </div>
-        <Link href='#'>
+        <Link href='/projects/vanilla-sky'>
           <Image
             className='rounded-xl w-full h-full'
             src={WebIllustration}
             width={500}
             height={500}
             alt=''
+            onClick={() => {
+              setCurrentSection(null!);
+              setCurrentRef(null!);
+            }}
           />
         </Link>
         <div className='py-5'>

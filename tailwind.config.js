@@ -250,6 +250,14 @@ module.exports = {
             transform: "translate(0, 0) scale(1)",
           },
         },
+        "fade-in": {
+          from: {
+            opacity: "0",
+          },
+          to: {
+            opacity: "1",
+          },
+        },
       },
       animation: {
         "pop-up": "pop-up 0.6s ease-in-out",
@@ -261,6 +269,7 @@ module.exports = {
         circle: "circle 7s infinite ease-in-out",
         grow: "grow 0.5s ease-in-out",
         "scale-up-hor-center": "scale-up-hor-center 1.6s ease-in-out",
+        "fade-in": "fade-in 0.5s ease-out",
       },
       borderRadius: {
         "4xl": "2rem",

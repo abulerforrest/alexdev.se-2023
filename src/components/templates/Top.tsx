@@ -1,10 +1,14 @@
-import { IPassRefs } from "../../interfaces/refs/refs";
 import Navigation from "../molecules/Navigation";
 
-const Top = (props: { passRefs: IPassRefs }) => {
+interface ITop {
+  invertColors?: boolean;
+}
+
+const Top = (props: ITop) => {
+  const { invertColors } = props;
   return (
     <div className='flex h-22 justify-between items-start relative ml-[46px]'>
-      <Navigation passRefs={props.passRefs} />
+      <Navigation invertColors={invertColors || false} />
     </div>
   );
 };

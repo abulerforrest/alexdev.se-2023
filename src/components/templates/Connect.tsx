@@ -12,13 +12,15 @@ import { alexDevStore } from "../../store/store";
 import { scrollToSection } from "../../func";
 import { IPassRefs } from "../../interfaces/refs/refs";
 
-const Connect = (props: { passRefs: IPassRefs }) => {
-  const { scrollY } = useStore(alexDevStore);
-  const scrollFullfillment: boolean =
-    scrollY > 200 &&
-    scrollY < (props.passRefs.connect as any).current.offsetTop - 380 &&
-    scrollY <= (props.passRefs.connect as any).current.offsetTop;
-
+const Connect = () => {
+  let scrollFullfillment: boolean = false;
+  const { scrollY, refs } = useStore(alexDevStore);
+  if ((refs?.connect as any)?.current?.offsetTop) {
+    scrollFullfillment =
+      scrollY > 200 &&
+      scrollY < (refs?.connect as any)?.current.offsetTop - 380 &&
+      scrollY <= (refs?.connect as any)?.current.offsetTop;
+  }
   return (
     <>
       <SectionHeading title='Connect' />
@@ -56,7 +58,7 @@ const Connect = (props: { passRefs: IPassRefs }) => {
                 ? "rgba(0, 0, 0, 0.24) 0px 3px 8px"
                 : "",
             }}
-            onClick={() => scrollToSection(props.passRefs.home)}
+            onClick={() => scrollToSection(refs?.home)}
             className={`z-50 outline-none border-2 border-b-0 border-transparent bg-bone-white dark:bg-retro-black px-4 rounded-t-[20px] ${
               scrollFullfillment &&
               " animate-pop-up fixed active:border-opacity-50 active:border-retro-black"

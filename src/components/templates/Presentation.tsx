@@ -5,18 +5,16 @@ import ActionButtons from "../molecules/ActionButtons";
 import LightSwitch from "../molecules/LightSwitch";
 import WelcomeText from "../molecules/WelcomeText";
 import { SECTION_TYPES, alexDevStore } from "../../store/store";
-import { IPassRefs } from "../../interfaces/refs/refs";
 import { scrollToSection } from "../../func";
 import ArrowNextSection from "../atoms/ArrowNextSection";
 import { useEffect, useState } from "react";
 
-interface IPresentation {
-  passRefs: IPassRefs;
-}
+interface IPresentation {}
 
 const Presentation = (props: IPresentation) => {
-  const { darkMode, setCurrentRef, setCurrentSection } = useStore(alexDevStore);
-  const [fade, setFade] = useState(false);
+  const { darkMode, setCurrentRef, setCurrentSection, refs } =
+    useStore(alexDevStore);
+  const [_fade, setFade] = useState(false);
 
   useEffect(() => {
     setFade(true);
@@ -49,9 +47,9 @@ const Presentation = (props: IPresentation) => {
           <ArrowNextSection
             onClick={(event) => {
               event.preventDefault();
-              setCurrentRef(props.passRefs.experiences);
+              setCurrentRef(refs?.experiences);
               setCurrentSection(SECTION_TYPES.EXPERIENCES);
-              scrollToSection(props.passRefs.experiences);
+              scrollToSection(refs?.experiences);
             }}
           />
         </div>

@@ -1,23 +1,18 @@
 import { useStore } from "zustand";
 import { ISections, SECTION_TYPES, alexDevStore } from "../../store/store";
-import { IPassRefs } from "../../interfaces/refs/refs";
 import { MutableRefObject, useState } from "react";
 import { useRouter } from "next/navigation";
-import useScrollTo from "../../hooks/useScrollTo";
 
-interface ISlideNav {
-  passRefs: IPassRefs;
-}
+interface ISlideNav {}
 
 const SlideNav = (props: ISlideNav) => {
   const router = useRouter();
   const store = useStore(alexDevStore);
 
-  const { navOpen, setNavOpen, currentSection, setCurrentSection } = store;
+  const { navOpen, setNavOpen, currentSection, setCurrentSection, refs } =
+    store;
 
-  const [currentRef, setCurrentRef] = useState<MutableRefObject<null>>(null!);
-
-  useScrollTo(currentRef);
+  const [_currentRef, setCurrentRef] = useState<MutableRefObject<null>>(null!);
 
   const handleSlideNavClick = (
     clickRef: MutableRefObject<null>,
@@ -47,12 +42,7 @@ const SlideNav = (props: ISlideNav) => {
             navOpen && "mb-3 animate-slide-from-right animation-delay-100"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
-            handleSlideNavClick(
-              props.passRefs.home,
-              "",
-              event,
-              SECTION_TYPES.HOME
-            )
+            handleSlideNavClick(refs?.home, "", event, SECTION_TYPES.HOME)
           }
         >
           Home
@@ -65,7 +55,7 @@ const SlideNav = (props: ISlideNav) => {
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
             handleSlideNavClick(
-              props.passRefs.projects,
+              refs?.projects,
               "projects",
               event,
               SECTION_TYPES.PROJECTS
@@ -81,12 +71,7 @@ const SlideNav = (props: ISlideNav) => {
             navOpen && "mb-3 animate-slide-from-right animation-delay-300"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
-            handleSlideNavClick(
-              props.passRefs.code,
-              "code",
-              event,
-              SECTION_TYPES.CODE
-            )
+            handleSlideNavClick(refs?.code, "code", event, SECTION_TYPES.CODE)
           }
         >
           Code
@@ -99,7 +84,7 @@ const SlideNav = (props: ISlideNav) => {
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
             handleSlideNavClick(
-              props.passRefs.about,
+              refs?.about,
               "about",
               event,
               SECTION_TYPES.ABOUT
@@ -116,7 +101,7 @@ const SlideNav = (props: ISlideNav) => {
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
           onClick={(event) =>
             handleSlideNavClick(
-              props.passRefs.connect,
+              refs?.connect,
               "connect",
               event,
               SECTION_TYPES.CONNECT

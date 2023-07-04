@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Home from "../components/templates/Home";
+import "../../styles/globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alexdev.se"),
@@ -49,10 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body>
-        <Home />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

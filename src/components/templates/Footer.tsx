@@ -1,16 +1,15 @@
 import Link from "next/link";
 import Logo, { LOGOVARIATIONS } from "../atoms/Logo";
 import { IoIosPerson, IoMdCall, IoMdMail } from "react-icons/io";
-import { IPassRefs } from "../../interfaces/refs/refs";
 import { MutableRefObject } from "react";
 import { ISections, SECTION_TYPES, alexDevStore } from "../../store/store";
 import { useStore } from "zustand";
 import { useRouter } from "next/navigation";
 const spriteCommonStyle = "h-1 height w-full mb-0.5 rounded-md";
 
-const Footer = (props: { passRefs: IPassRefs }) => {
+const Footer = () => {
   const store = useStore(alexDevStore);
-  const { setCurrentSection, setCurrentRef } = store;
+  const { setCurrentRef, refs } = store;
 
   const router = useRouter();
 
@@ -23,7 +22,9 @@ const Footer = (props: { passRefs: IPassRefs }) => {
     event.preventDefault();
     setCurrentRef(clickRef);
     router.push(`/${route}`);
-    setCurrentSection(section);
+    // setLoc(
+    //   `${window.location.protocol}//${window.location.host}${window.location.pathname}`
+    // );
   };
 
   return (
@@ -68,7 +69,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                     href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
-                        props.passRefs.home,
+                        refs?.home,
                         "",
                         event,
                         SECTION_TYPES.HOME
@@ -83,7 +84,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                     href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
-                        props.passRefs.projects,
+                        refs?.projects,
                         "projects",
                         event,
                         SECTION_TYPES.PROJECTS
@@ -98,7 +99,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                     href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
-                        props.passRefs.code,
+                        refs?.code,
                         "code",
                         event,
                         SECTION_TYPES.CODE
@@ -113,7 +114,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                     href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
-                        props.passRefs.about,
+                        refs?.about,
                         "about",
                         event,
                         SECTION_TYPES.ABOUT
@@ -128,7 +129,7 @@ const Footer = (props: { passRefs: IPassRefs }) => {
                     href={""}
                     onClick={(event) => {
                       handleFooterNavClick(
-                        props.passRefs.connect,
+                        refs?.connect,
                         "connect",
                         event,
                         SECTION_TYPES.CONNECT
@@ -144,10 +145,11 @@ const Footer = (props: { passRefs: IPassRefs }) => {
           <div className='flex col-span-2 justify-center xs:justify-center xs:col-span-2 sm:col-span-1 sm:justify-end'>
             <div className='uppercase text-[#CACAC4] text-footer-heading-sm sm:text-footer-heading-sm md:text-footer-heading-md xl:text-footer-heading-xl'>
               <Logo
-                href='/'
+                href=''
                 onClick={(event) => {
+                  event.preventDefault();
                   handleFooterNavClick(
-                    props.passRefs.home,
+                    refs?.home,
                     "",
                     event,
                     SECTION_TYPES.HOME

@@ -6,12 +6,10 @@ import { useStore } from "zustand";
 import { IPassRefs } from "../../interfaces/refs/refs";
 import ArrowNextSection from "../atoms/ArrowNextSection";
 
-interface IExperiences {
-  passRefs: IPassRefs;
-}
+interface IExperiences {}
 
 const Experiences = (props: IExperiences) => {
-  const { setCurrentRef, setCurrentSection } = useStore(alexDevStore);
+  const { setCurrentRef, setCurrentSection, refs } = useStore(alexDevStore);
 
   return (
     <>
@@ -80,9 +78,9 @@ const Experiences = (props: IExperiences) => {
         <ArrowNextSection
           onClick={(event) => {
             event.preventDefault();
-            setCurrentRef(props.passRefs.techniques);
+            setCurrentRef(refs?.techniques);
             setCurrentSection(SECTION_TYPES.TECHNIQUES);
-            scrollToSection(props.passRefs.techniques);
+            scrollToSection(refs?.techniques);
           }}
           inverted
         />

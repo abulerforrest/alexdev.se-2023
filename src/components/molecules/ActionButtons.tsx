@@ -16,7 +16,8 @@ const ActionButtons = () => {
               className={`lg:text-[30px] md:text-[22px] text-[20px] ml-1.5 text-orange-dream dark:text-exotic-fanta`}
             />
           }
-          href={process.env.NEXT_ALEX_RESUME_URL}
+          //{process.env.NEXT_ALEX_RESUME_URL}
+          href=''
         />
       </span>
       <span

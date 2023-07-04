@@ -1,29 +1,23 @@
 import { useStore } from "zustand";
-import Logo, { LOGOVARIATIONS } from "../atoms/Logo";
+import Logo, { LOGOVARIATIONS, LogoStyleType } from "../atoms/Logo";
 import MenuItem from "../atoms/MenuItem";
 import NavigationButton from "../atoms/NavigationButton";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
-import { IPassRefs } from "../../interfaces/refs/refs";
+import { MutableRefObject, useEffect, useRef } from "react";
 import { ISections, SECTION_TYPES, alexDevStore } from "../../store/store";
 import { useRouter } from "next/navigation";
-import useScrollTo from "../../hooks/useScrollTo";
 import SlideNav from "./SlideNav";
 
-const Navigation = (props: { passRefs: IPassRefs }) => {
+interface INavigation {
+  invertColors: boolean;
+  logoStyle: LogoStyleType;
+}
+const Navigation = (props: INavigation) => {
   const store = useStore(alexDevStore);
-  const {
-    navOpen,
-    setNavOpen,
-    setCurrentSection,
-    currentRef,
-    setCurrentRef,
-    currentSection,
-  } = store;
+  const { invertColors, logoStyle } = props;
+  const { navOpen, setNavOpen, setCurrentRef, currentSection, refs } = store;
 
   const ref = useRef(null);
   const router = useRouter();
-
-  useScrollTo(currentRef);
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
@@ -44,13 +38,11 @@ const Navigation = (props: { passRefs: IPassRefs }) => {
   const handleNavClick = (
     clickRef: MutableRefObject<null>,
     route: string,
-    event: React.MouseEvent<HTMLLIElement>,
-    section: ISections
+    event: React.MouseEvent<HTMLLIElement>
   ) => {
     event.preventDefault();
     setCurrentRef(clickRef);
     router.push(`/${route}`);
-    setCurrentSection(section);
   };
 
   return (
@@ -60,74 +52,48 @@ const Navigation = (props: { passRefs: IPassRefs }) => {
         id='navbar-sticky'
       >
         <span>
-          <Logo href='/' logoStyle={LOGOVARIATIONS.DARK} />
+          <Logo invert={invertColors} logoStyle={logoStyle} href='/' />
         </span>
         <span className='items-center p-5 xl:pr-[48px]'>
           <ul className={`flex justify-center items-center gap-4 h-10 mt-5`}>
             <MenuItem
-              onClick={(event) =>
-                handleNavClick(
-                  props.passRefs.home,
-                  "",
-                  event,
-                  SECTION_TYPES.HOME
-                )
-              }
+              onClick={(event) => handleNavClick(refs?.home, "", event)}
               isCurrent={currentSection === SECTION_TYPES.HOME}
               label='Home'
               itemColor='#eb7a4d'
+              invertColors={invertColors}
             />
             <MenuItem
               onClick={(event) =>
-                handleNavClick(
-                  props.passRefs.projects,
-                  "projects",
-                  event,
-                  SECTION_TYPES.PROJECTS
-                )
+                handleNavClick(refs?.projects, "projects", event)
               }
               isCurrent={currentSection === SECTION_TYPES.PROJECTS}
               label='Projects'
               itemColor='#D7AE3D'
+              invertColors={invertColors}
             />
             <MenuItem
-              onClick={(event) =>
-                handleNavClick(
-                  props.passRefs.code,
-                  "code",
-                  event,
-                  SECTION_TYPES.CODE
-                )
-              }
+              onClick={(event) => handleNavClick(refs?.code, "code", event)}
               isCurrent={currentSection === SECTION_TYPES.CODE}
               label='Code'
               itemColor='#487AA0'
+              invertColors={invertColors}
             />
             <MenuItem
-              onClick={(event) =>
-                handleNavClick(
-                  props.passRefs.about,
-                  "about",
-                  event,
-                  SECTION_TYPES.ABOUT
-                )
-              }
+              onClick={(event) => handleNavClick(refs?.about, "about", event)}
               isCurrent={currentSection === SECTION_TYPES.ABOUT}
               label='About'
               itemColor='#e1614b'
+              invertColors={invertColors}
             />
             <MenuItem
               onClick={(event) =>
-                handleNavClick(
-                  props.passRefs.connect,
-                  "connect",
-                  event,
-                  SECTION_TYPES.CONNECT
-                )
+                handleNavClick(refs?.connect, "connect", event)
               }
               isCurrent={currentSection === SECTION_TYPES.CONNECT}
               label='Connect'
               itemColor='#e1614b'
+              invertColors={invertColors}
             />
           </ul>
         </span>
@@ -137,7 +103,7 @@ const Navigation = (props: { passRefs: IPassRefs }) => {
         ref={ref}
       >
         <NavigationButton />
-        <SlideNav passRefs={props.passRefs} />
+        <SlideNav />
       </div>
     </>
   );

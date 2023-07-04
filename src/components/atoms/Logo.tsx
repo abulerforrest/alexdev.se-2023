@@ -7,15 +7,18 @@ export const LOGOVARIATIONS = {
   LIGHT: "LIGHT",
 } as const;
 
-type LogoStyleType = (typeof LOGOVARIATIONS)[keyof typeof LOGOVARIATIONS];
+export type LogoStyleType =
+  (typeof LOGOVARIATIONS)[keyof typeof LOGOVARIATIONS];
 
 interface ILogo {
   logoStyle?: LogoStyleType;
   href: string;
+  invert: boolean;
   onClick?: (event: any) => void;
 }
 
-const Logo = ({ logoStyle, href, onClick }: ILogo) => {
+const Logo = ({ logoStyle, href, invert, onClick }: ILogo) => {
+  invert && (logoStyle = LOGOVARIATIONS.LIGHT);
   return (
     <Link onClick={onClick} href={href} className='items-center xl:flex'>
       <div className='select-none w-min'>
