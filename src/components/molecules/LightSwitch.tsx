@@ -13,6 +13,7 @@ const LightSwitch = () => {
     >
       <div className='mb-2'>
         <button
+          className='outline-none'
           onClick={() => {
             setDarkMode({ darkMode: darkMode });
           }}

@@ -1,23 +1,31 @@
+import Link from "next/link";
+
 interface IMenuItem {
   label: string;
   itemColor: string;
   isCurrent: boolean;
   invertColors?: boolean;
-  onClick: (event: React.MouseEvent<HTMLLIElement>) => void;
+  href: string;
 }
 
 const MenuItem = (props: IMenuItem) => {
-  const { isCurrent, invertColors } = props;
+  const { isCurrent, invertColors, href, label } = props;
   return (
     <li
-      onClick={props.onClick}
-      className={`dark:text-bone-white hover:border-opacity-80 hover:border-b-orange-dream dark:hover:border-b-exotic-fanta flex border-opacity-0 duration-300 transition-all h-1/2 items-center pb-[1rem] border-b-4 border-transparent ${
-        isCurrent && "border-b-orange-dream border-opacity-100"
-      } text-navigation-labels-xl ${
+      className={`group dark:text-bone-white flex h-1/2 items-center text-navigation-labels-xl ${
         invertColors && "text-bone-white"
       }  group font-kabel font-black uppercase`}
     >
-      <div className='cursor-pointer'>{props.label}</div>
+      <Link href={href}>
+        <div className='cursor-pointer'>{label}</div>
+        <div
+          className={`transition-all duration-300 bg-orange-dream dark:bg-exotic-fanta group-hover:w-full h-1 rounded-full ${
+            isCurrent
+              ? "w-full animation-delay-300 animate-slide-from-right"
+              : "w-0"
+          }`}
+        ></div>
+      </Link>
     </li>
   );
 };

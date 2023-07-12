@@ -1,31 +1,14 @@
 import { useStore } from "zustand";
-import { ISections, SECTION_TYPES, alexDevStore } from "../../store/store";
-import { MutableRefObject, useState } from "react";
-import { useRouter } from "next/navigation";
+import { SECTION_TYPES, alexDevStore } from "../../store/store";
+import Link from "next/link";
 
 interface ISlideNav {}
 
 const SlideNav = (props: ISlideNav) => {
-  const router = useRouter();
   const store = useStore(alexDevStore);
 
   const { navOpen, setNavOpen, currentSection, setCurrentSection, refs } =
     store;
-
-  const [_currentRef, setCurrentRef] = useState<MutableRefObject<null>>(null!);
-
-  const handleSlideNavClick = (
-    clickRef: MutableRefObject<null>,
-    route: string,
-    event: React.MouseEvent<HTMLLIElement>,
-    section: ISections
-  ) => {
-    event.preventDefault();
-    setCurrentRef(clickRef);
-    router.push(`/${route}`);
-    setNavOpen({ navOpen: !navOpen });
-    setCurrentSection(section);
-  };
 
   return (
     <nav
@@ -36,79 +19,90 @@ const SlideNav = (props: ISlideNav) => {
     >
       <ul className=' py-5 pl-10 flex-col w-[100%]'>
         <li
-          className={`${
-            currentSection === SECTION_TYPES.HOME && "border-b-4"
-          } border-orange-dream dark:border-exotic-fanta w-min cursor-pointer opacity-0 ${
+          className={`w-min cursor-pointer ${
             navOpen && "mb-3 animate-slide-from-right animation-delay-100"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-          onClick={(event) =>
-            handleSlideNavClick(refs?.home, "", event, SECTION_TYPES.HOME)
-          }
         >
-          Home
+          <Link href='/' onClick={() => setNavOpen({ navOpen: !navOpen })}>
+            <div>Home</div>
+            <div
+              className={`transition-all duration-300 bg-orange-dream dark:bg-exotic-fanta group-hover:w-full h-1 rounded-full ${
+                currentSection === SECTION_TYPES.HOME
+                  ? "w-full animation-delay-300 animate-slide-from-right"
+                  : "w-0"
+              }`}
+            ></div>
+          </Link>
         </li>
         <li
-          className={`${
-            currentSection === SECTION_TYPES.PROJECTS && "border-b-4"
-          } border-orange-dream dark:border-exotic-fanta w-min cursor-pointer opacity-0 ${
-            navOpen && "mb-3 animate-slide-from-right animation-delay-500"
-          } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-          onClick={(event) =>
-            handleSlideNavClick(
-              refs?.projects,
-              "projects",
-              event,
-              SECTION_TYPES.PROJECTS
-            )
-          }
-        >
-          Projects
-        </li>
-        <li
-          className={`${
-            currentSection === SECTION_TYPES.CODE && "border-b-4"
-          } border-orange-dream dark:border-exotic-fanta w-min cursor-pointer opacity-0 ${
+          className={`w-min cursor-pointer opacity-0 ${
             navOpen && "mb-3 animate-slide-from-right animation-delay-300"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-          onClick={(event) =>
-            handleSlideNavClick(refs?.code, "code", event, SECTION_TYPES.CODE)
-          }
         >
-          Code
+          <Link
+            href='/projects'
+            onClick={() => setNavOpen({ navOpen: !navOpen })}
+          >
+            <div>Projects</div>
+            <div
+              className={`transition-all duration-300 bg-orange-dream dark:bg-exotic-fanta group-hover:w-full h-1 rounded-full ${
+                currentSection === SECTION_TYPES.PROJECTS
+                  ? "w-full animation-delay-300 animate-slide-from-right"
+                  : "w-0"
+              }`}
+            ></div>
+          </Link>
         </li>
         <li
-          className={`hover: ${
-            currentSection === SECTION_TYPES.ABOUT && "border-b-4"
-          } border-orange-dream dark:border-exotic-fanta w-min cursor-pointer opacity-0 ${
+          className={`w-min cursor-pointer opacity-0 ${
+            navOpen && "mb-3 animate-slide-from-right animation-delay-500"
+          } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
+        >
+          <Link href='/code' onClick={() => setNavOpen({ navOpen: !navOpen })}>
+            <div>Code</div>
+            <div
+              className={`transition-all duration-300 bg-orange-dream dark:bg-exotic-fanta group-hover:w-full h-1 rounded-full ${
+                currentSection === SECTION_TYPES.CODE
+                  ? "w-full animation-delay-300 animate-slide-from-right"
+                  : "w-0"
+              }`}
+            ></div>
+          </Link>
+        </li>
+        <li
+          className={`w-min cursor-pointer opacity-0 ${
             navOpen && "mb-3 animate-slide-from-right animation-delay-700"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-          onClick={(event) =>
-            handleSlideNavClick(
-              refs?.about,
-              "about",
-              event,
-              SECTION_TYPES.ABOUT
-            )
-          }
         >
-          About
+          <Link href='/about' onClick={() => setNavOpen({ navOpen: !navOpen })}>
+            <div>About</div>
+            <div
+              className={`transition-all duration-300 bg-orange-dream dark:bg-exotic-fanta group-hover:w-full h-1 rounded-full ${
+                currentSection === SECTION_TYPES.ABOUT
+                  ? "w-full animation-delay-300 animate-slide-from-right"
+                  : "w-0"
+              }`}
+            ></div>
+          </Link>
         </li>
         <li
-          className={`${
-            currentSection === SECTION_TYPES.CONNECT && "border-b-4"
-          } border-orange-dream dark:border-exotic-fanta w-min cursor-pointer opacity-0 ${
-            navOpen && "animate-slide-from-right animation-delay-900"
+          className={`w-min cursor-pointer opacity-0 ${
+            navOpen && "mb-3 animate-slide-from-right animation-delay-900"
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
-          onClick={(event) =>
-            handleSlideNavClick(
-              refs?.connect,
-              "connect",
-              event,
-              SECTION_TYPES.CONNECT
-            )
-          }
         >
-          Connect
+          <Link
+            href='/connect'
+            onClick={() => setNavOpen({ navOpen: !navOpen })}
+          >
+            <div>Connect</div>
+            <div
+              className={`transition-all duration-300 bg-orange-dream dark:bg-exotic-fanta group-hover:w-full h-1 rounded-full ${
+                currentSection === SECTION_TYPES.CONNECT
+                  ? "w-full animation-delay-300 animate-slide-from-right"
+                  : "w-0"
+              }`}
+            ></div>
+          </Link>
         </li>
       </ul>
     </nav>

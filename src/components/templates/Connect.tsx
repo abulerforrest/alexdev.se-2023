@@ -10,7 +10,6 @@ import SectionHeading from "../molecules/SectionHeading";
 
 import { alexDevStore } from "../../store/store";
 import { scrollToSection } from "../../func";
-import { IPassRefs } from "../../interfaces/refs/refs";
 
 const Connect = () => {
   let scrollFullfillment: boolean = false;

@@ -78,6 +78,10 @@ module.exports = {
       "heading-smashing-md": ["26px", "auto"] /* 26px */,
       "heading-smashing-sm": ["22px", "auto"] /* 22px */,
 
+      "heading-smashing-project-xl": ["38px", "auto"] /* 28px */,
+      "heading-smashing-project-md": ["35px", "auto"] /* 26px */,
+      "heading-smashing-project-sm": ["28px", "auto"] /* 22px */,
+
       "codecard-heading-xl": ["42px", "auto"] /* 42px */,
       "codecard-heading-md": ["36px", "auto"] /* 36px */,
       "codecard-heading-sm": ["33px", "auto"] /* 33px */,
@@ -125,7 +129,19 @@ module.exports = {
       "techniques-heading-xl": ["28px", "auto"] /* 28px */,
       "techniques-heading-sm": ["23px", "auto"] /* 23px */,
 
-      "navigation-labels-xl": ["1.5rem", "3.813"] /* Desktop: 24px */,
+      "project-page-heading-xl": ["60px", "71px"] /* 60px */,
+      "project-page-heading-md": ["55px", "67px"] /* 55px */,
+      "project-page-heading-sm": ["48px", "60px"] /* 48px */,
+
+      "project-page-text-xl": ["23px", "28px"],
+      "project-page-text-md": ["21px", "24px"],
+      "project-page-text-sm": ["19px", "22px"],
+
+      "project-background-heading-xl": ["48px", "auto"],
+      "project-background-heading-md": ["42px", "auto"],
+      "project-background-heading-sm": ["38px", "auto"],
+
+      "navigation-labels-xl": ["1.5rem", "1.313"] /* Desktop: 24px */,
       "button-xl": ["24px"],
       "button-md": ["21px"],
       "button-md": ["17px"],

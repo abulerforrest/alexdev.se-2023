@@ -13,7 +13,7 @@ export type LogoStyleType =
 interface ILogo {
   logoStyle?: LogoStyleType;
   href: string;
-  invert: boolean;
+  invert?: boolean;
   onClick?: (event: any) => void;
 }
 

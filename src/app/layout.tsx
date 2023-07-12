@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import "../../styles/globals.css";
+import MainFrame from "./MainFrame";
+import Top from "../components/templates/Top";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alexdev.se"),
@@ -48,8 +50,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body>{children}</body>
+    <html lang='en' className='scroll-smooth'>
+      <body>
+        <MainFrame />
+        {children}
+      </body>
     </html>
   );
 }

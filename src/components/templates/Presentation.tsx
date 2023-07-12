@@ -14,11 +14,6 @@ interface IPresentation {}
 const Presentation = (props: IPresentation) => {
   const { darkMode, setCurrentRef, setCurrentSection, refs } =
     useStore(alexDevStore);
-  const [_fade, setFade] = useState(false);
-
-  useEffect(() => {
-    setFade(true);
-  }, []);
 
   return (
     <div className='lg:mx-[46px]'>

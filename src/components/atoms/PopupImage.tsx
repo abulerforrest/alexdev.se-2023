@@ -9,8 +9,7 @@ const PopupImage = () => {
     setLoc(
       `${window.location.protocol}//${window.location.host}${window.location.pathname}`
     );
-    console.log(loc);
-  }, [setLoc, loc]);
+  }, [setLoc]);
 
   return (
     loc && (

@@ -65,98 +65,26 @@ const Footer = () => {
               </div>
               <div className='flex-col text-bone-white font-kabel font-black uppercase text-footer-navitem-sm'>
                 <div>
-                  <Link
-                    href={""}
-                    onClick={(event) => {
-                      handleFooterNavClick(
-                        refs?.home,
-                        "",
-                        event,
-                        SECTION_TYPES.HOME
-                      );
-                    }}
-                  >
-                    Home
-                  </Link>
+                  <Link href='/'>Home</Link>
                 </div>
                 <div>
-                  <Link
-                    href={""}
-                    onClick={(event) => {
-                      handleFooterNavClick(
-                        refs?.projects,
-                        "projects",
-                        event,
-                        SECTION_TYPES.PROJECTS
-                      );
-                    }}
-                  >
-                    Projects
-                  </Link>
+                  <Link href='/projects'>Projects</Link>
                 </div>
                 <div>
-                  <Link
-                    href={""}
-                    onClick={(event) => {
-                      handleFooterNavClick(
-                        refs?.code,
-                        "code",
-                        event,
-                        SECTION_TYPES.CODE
-                      );
-                    }}
-                  >
-                    Code
-                  </Link>
+                  <Link href='/code'>Code</Link>
                 </div>
                 <div>
-                  <Link
-                    href={""}
-                    onClick={(event) => {
-                      handleFooterNavClick(
-                        refs?.about,
-                        "about",
-                        event,
-                        SECTION_TYPES.ABOUT
-                      );
-                    }}
-                  >
-                    About
-                  </Link>
+                  <Link href='/about'>About</Link>
                 </div>
                 <div>
-                  <Link
-                    href={""}
-                    onClick={(event) => {
-                      handleFooterNavClick(
-                        refs?.connect,
-                        "connect",
-                        event,
-                        SECTION_TYPES.CONNECT
-                      );
-                    }}
-                  >
-                    Connect
-                  </Link>
+                  <Link href='/connect'>Connect</Link>
                 </div>
               </div>
             </div>
           </div>
           <div className='flex col-span-2 justify-center xs:justify-center xs:col-span-2 sm:col-span-1 sm:justify-end'>
             <div className='uppercase text-[#CACAC4] text-footer-heading-sm sm:text-footer-heading-sm md:text-footer-heading-md xl:text-footer-heading-xl'>
-              <Logo
-                href=''
-                onClick={(event) => {
-                  event.preventDefault();
-                  handleFooterNavClick(
-                    refs?.home,
-                    "",
-                    event,
-                    SECTION_TYPES.HOME
-                  );
-                }}
-                logoStyle={LOGOVARIATIONS.LIGHT}
-              />
+              <Logo href='/' logoStyle={LOGOVARIATIONS.LIGHT} />
             </div>
           </div>
         </div>

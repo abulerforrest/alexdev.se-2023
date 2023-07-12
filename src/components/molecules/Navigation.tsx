@@ -1,10 +1,9 @@
 import { useStore } from "zustand";
-import Logo, { LOGOVARIATIONS, LogoStyleType } from "../atoms/Logo";
+import Logo, { LogoStyleType } from "../atoms/Logo";
 import MenuItem from "../atoms/MenuItem";
 import NavigationButton from "../atoms/NavigationButton";
 import { MutableRefObject, useEffect, useRef } from "react";
 import { ISections, SECTION_TYPES, alexDevStore } from "../../store/store";
-import { useRouter } from "next/navigation";
 import SlideNav from "./SlideNav";
 
 interface INavigation {
@@ -14,14 +13,23 @@ interface INavigation {
 const Navigation = (props: INavigation) => {
   const store = useStore(alexDevStore);
   const { invertColors, logoStyle } = props;
-  const { navOpen, setNavOpen, setCurrentRef, currentSection, refs } = store;
+  const {
+    navOpen,
+    setNavOpen,
+    currentSection,
+    refs,
+    setCurrentRef,
+    setCurrentSection,
+  } = store;
 
-  const ref = useRef(null);
-  const router = useRouter();
+  const currentRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (ref.current && !(ref.current as any).contains(event.target)) {
+      if (
+        currentRef.current &&
+        !(currentRef.current as any).contains(event.target)
+      ) {
         if (navOpen) {
           setNavOpen({ navOpen: false });
         }
@@ -33,17 +41,7 @@ const Navigation = (props: INavigation) => {
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  }, [ref, navOpen, setNavOpen]);
-
-  const handleNavClick = (
-    clickRef: MutableRefObject<null>,
-    route: string,
-    event: React.MouseEvent<HTMLLIElement>
-  ) => {
-    event.preventDefault();
-    setCurrentRef(clickRef);
-    router.push(`/${route}`);
-  };
+  }, [currentRef, navOpen, setNavOpen]);
 
   return (
     <>
@@ -57,42 +55,38 @@ const Navigation = (props: INavigation) => {
         <span className='items-center p-5 xl:pr-[48px]'>
           <ul className={`flex justify-center items-center gap-4 h-10 mt-5`}>
             <MenuItem
-              onClick={(event) => handleNavClick(refs?.home, "", event)}
               isCurrent={currentSection === SECTION_TYPES.HOME}
               label='Home'
               itemColor='#eb7a4d'
+              href='/'
               invertColors={invertColors}
             />
             <MenuItem
-              onClick={(event) =>
-                handleNavClick(refs?.projects, "projects", event)
-              }
               isCurrent={currentSection === SECTION_TYPES.PROJECTS}
               label='Projects'
               itemColor='#D7AE3D'
+              href='/projects'
               invertColors={invertColors}
             />
             <MenuItem
-              onClick={(event) => handleNavClick(refs?.code, "code", event)}
               isCurrent={currentSection === SECTION_TYPES.CODE}
               label='Code'
               itemColor='#487AA0'
+              href='/code'
               invertColors={invertColors}
             />
             <MenuItem
-              onClick={(event) => handleNavClick(refs?.about, "about", event)}
               isCurrent={currentSection === SECTION_TYPES.ABOUT}
               label='About'
               itemColor='#e1614b'
+              href='/about'
               invertColors={invertColors}
             />
             <MenuItem
-              onClick={(event) =>
-                handleNavClick(refs?.connect, "connect", event)
-              }
               isCurrent={currentSection === SECTION_TYPES.CONNECT}
               label='Connect'
               itemColor='#e1614b'
+              href='/connect'
               invertColors={invertColors}
             />
           </ul>
@@ -100,7 +94,7 @@ const Navigation = (props: INavigation) => {
       </div>
       <div
         className='flex w-full justify-end md:hidden md:order-first'
-        ref={ref}
+        ref={currentRef}
       >
         <NavigationButton />
         <SlideNav />

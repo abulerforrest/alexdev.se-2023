@@ -1,40 +1,41 @@
 import { usePathname } from "next/navigation";
-import { MutableRefObject, useEffect } from "react";
+import { useEffect } from "react";
 import { IPassRefs } from "../interfaces/refs/refs";
-import { ISections, SECTION_TYPES, alexDevStore } from "../store/store";
+import { SECTION_TYPES, alexDevStore } from "../store/store";
 import { useStore } from "zustand";
+import { scrollToSection } from "../func";
 
 const useScrollToSection = () => {
   const store = useStore(alexDevStore);
-  const { refs, setCurrentSection, setCurrentRef } = store;
+  const { setCurrentSection, refs } = store;
 
-  const pathname = usePathname()!.replace("/", "");
-  const currentRef: MutableRefObject<null> =
-    refs && refs[pathname as keyof IPassRefs];
+  let pathname = usePathname().replace("/", "");
+
+  if (pathname === "") {
+    pathname = "home";
+  }
 
   useEffect(() => {
-    let section: ISections = SECTION_TYPES.HOME;
-    if (pathname === "") {
-      section = SECTION_TYPES.HOME;
-    } else if (pathname === "code") {
-      section = SECTION_TYPES.CODE;
-    } else if (pathname.includes("projects")) {
-      section = SECTION_TYPES.PROJECTS;
-    } else if (pathname === "about") {
-      section = SECTION_TYPES.ABOUT;
-    } else if (pathname === "connect") {
-      section = SECTION_TYPES.CONNECT;
+    const activeRef = refs && refs[pathname as keyof IPassRefs];
+    switch (pathname) {
+      case "home":
+        setCurrentSection(SECTION_TYPES.HOME);
+        break;
+      case "projects":
+        setCurrentSection(SECTION_TYPES.PROJECTS);
+        break;
+      case "code":
+        setCurrentSection(SECTION_TYPES.CODE);
+        break;
+      case "about":
+        setCurrentSection(SECTION_TYPES.ABOUT);
+        break;
+      case "connect":
+        setCurrentSection(SECTION_TYPES.CONNECT);
+        break;
     }
-
-    setCurrentSection(section);
-    setCurrentRef(currentRef);
-
-    if (currentRef && currentRef.current) {
-      (currentRef.current as any).scrollIntoView({ behavior: "smooth" });
-    }
-  }, [pathname, currentRef, setCurrentSection]);
-
-  return [currentRef];
+    scrollToSection(activeRef);
+  }, [refs, pathname, setCurrentSection]);
 };
 
 export default useScrollToSection;
