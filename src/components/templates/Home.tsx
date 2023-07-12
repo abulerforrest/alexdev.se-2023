@@ -23,7 +23,7 @@ const Home = (_props: IHome) => {
 
   return (
     <main ref={refs?.home} className={`${darkMode ? "dark" : ""}`}>
-      <section className='transition-all duration-300 bg-bone-white dark:bg-retro-black'>
+      <section className='transition-all duration-300 bg-bone-white overflow-x-hidden scroll-smooth dark:bg-retro-black'>
         <section>
           <Top />
         </section>
