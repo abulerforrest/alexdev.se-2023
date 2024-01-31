@@ -12,10 +12,11 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://alexdev.se"),
-  title: "alexdev.se",
-  description: "A portfolio site in multicolor - by Alexander Forrest.",
   applicationName: "alexdev.se",
+  metadataBase: new URL("https://alexdev.se"),
+  title: `alexdev™ — Alex's Creative Portfolio In Multicolor`,
+  description:
+    "Meet Alex, a full-stack developer crafting solid and responsive web solutions. Explore his portfolio — showcasing coding and creativity!",
   authors: [{ name: "Alexander Forrest", url: "https://alexdev.se" }],
   keywords:
     "development, challenge, opportunity, frameworks, code, Alexander Forrest, cartina, projects, javascript, typescript, webdev, tetris, resumé, connect, experience, agile, fullstack, alexdev, about, creative, frontend, front-end, build, user-friendly, seamless, UX, UI, design, webdesign, technical, skills, functional, programming, impression, vision, c++, php, ssh, bash, linux, terminal, responsive, innovative, explore, smart, portfolio, showcase, sleek, websites, applications, apps, ideas, passion, full-stack, figma, transforming, node js, next js, git, angular, redux, golang, deno, ts, material ui, ui, php, docker, vanilla, photoshop, wordpress",
@@ -29,12 +30,13 @@ export const metadata: Metadata = {
     countryName: "Sweden",
     emails: "alex@alexdev.se",
     url: "https://alexdev.se",
-    title: "alexdev.se",
-    description: "A portfolio site in multicolor - by Alexander Forrest.",
+    title: "alexdev™ — Alex's Creative Portfolio In Multicolor",
+    description:
+      "Meet Alex, a full-stack developer crafting solid and responsive web solutions. Explore his portfolio — showcasing coding and creativity!",
     siteName: "alexdev.se",
     images: [
       {
-        url: "https://alexdev.se/icon.png",
+        url: "https://firebasestorage.googleapis.com/v0/b/alexdev-se.appspot.com/o/og-min.png?alt=media&token=3523a084-c844-4b78-a07c-60c1dbe8fa71",
       },
     ],
   },
@@ -45,7 +47,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@alexdev",
     creator: "@zalzachipmusic",
-    images: "https://alexdev.se/icon.png",
+    images:
+      "https://firebasestorage.googleapis.com/v0/b/alexdev-se.appspot.com/o/og-min.png?alt=media&token=3523a084-c844-4b78-a07c-60c1dbe8fa71",
   },
 };
 
