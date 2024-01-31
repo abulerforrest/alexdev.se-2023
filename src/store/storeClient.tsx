@@ -36,7 +36,7 @@ function StoreClient({ projects }: { projects: DocumentData[] }) {
         alexDevStore.getState().refs[pathname as keyof typeof refs]
       );
     }
-  }, [hasMounted, scrollToSection]);
+  }, [hasMounted, pathname]);
 
   const initialized = useRef(false);
   if (!initialized.current) {
