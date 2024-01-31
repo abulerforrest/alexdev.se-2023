@@ -8,31 +8,12 @@ import { useRouter } from "next/navigation";
 const spriteCommonStyle = "h-1 height w-full mb-0.5 rounded-md";
 
 const Footer = () => {
-  const store = useStore(alexDevStore);
-  const { setCurrentRef, refs } = store;
-
-  const router = useRouter();
-
-  const handleFooterNavClick = (
-    clickRef: MutableRefObject<null>,
-    route: string,
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    section: ISections
-  ) => {
-    event.preventDefault();
-    setCurrentRef(clickRef);
-    router.push(`/${route}`);
-    // setLoc(
-    //   `${window.location.protocol}//${window.location.host}${window.location.pathname}`
-    // );
-  };
-
   return (
     <footer className='min-h-[454px] bg-retro-black dark:bg-dark-mode-feel m-auto flex justify-center pb-10'>
       <div className='flex-col pl-20 pr-20'>
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-3 gap-10 font-eurostile mt-20 w-full'>
           <div className='min-w-[160px] flex-col'>
-            <div className='whitespace-nowrap uppercase text-[#CACAC4] text-footer-heading-sm sm:text-footer-heading-sm md:text-footer-heading-md xl:text-footer-heading-xl'>
+            <div className='select-none whitespace-nowrap uppercase text-[#CACAC4] text-footer-heading-sm sm:text-footer-heading-sm md:text-footer-heading-md xl:text-footer-heading-xl'>
               #React out
             </div>
             <div className='h-10 whitespace-nowrap flex items-center gap-2 text-footer-contact-text sm:text-footer-contact-text-sm md:text-footer-contact-text-md xl:text-footer-contact-text-xl text-bone-white'>
@@ -60,24 +41,34 @@ const Footer = () => {
           </div>
           <div className='flex px-10'>
             <div>
-              <div className='whitespace-nowrap uppercase text-[#CACAC4] text-footer-heading-sm sm:text-footer-heading-sm md:text-footer-heading-md xl:text-footer-heading-xl'>
+              <div className='select-none whitespace-nowrap uppercase text-[#CACAC4] text-footer-heading-sm sm:text-footer-heading-sm md:text-footer-heading-md xl:text-footer-heading-xl'>
                 #Sections
               </div>
               <div className='flex-col text-bone-white font-kabel font-black uppercase text-footer-navitem-sm'>
                 <div>
-                  <Link href='/'>Home</Link>
+                  <Link href='/' prefetch>
+                    Home
+                  </Link>
                 </div>
                 <div>
-                  <Link href='/projects'>Projects</Link>
+                  <Link href='/showcase' prefetch>
+                    Showcase
+                  </Link>
                 </div>
                 <div>
-                  <Link href='/code'>Code</Link>
+                  <Link href='/code' prefetch>
+                    Code
+                  </Link>
                 </div>
                 <div>
-                  <Link href='/about'>About</Link>
+                  <Link href='/about' prefetch>
+                    About
+                  </Link>
                 </div>
                 <div>
-                  <Link href='/connect'>Connect</Link>
+                  <Link href='/connect' prefetch>
+                    Connect
+                  </Link>
                 </div>
               </div>
             </div>
@@ -89,8 +80,8 @@ const Footer = () => {
           </div>
         </div>
         <div className=' w-full h-[0.08rem] bg-[#5D594F] my-5'>
-          <div className='flex gap-4 py-2 items-center'>
-            <div className='w-[30px]'>
+          <div className='flex gap-4 py-2 items-center justify-center sm:justify-normal'>
+            <div className='hidden sm:block w-[30px]'>
               <div
                 className={`my-[0.15rem] animate-grow-from-left bg-exotic-fanta ${spriteCommonStyle}`}
               />
@@ -108,7 +99,7 @@ const Footer = () => {
               />
             </div>
             <div className='cursor-default select-none whitespace-nowrap text-bone-white font-eurostile text-footer-copyright-text-sm sm:text-footer-copyright-text-sm md:text-footer-copyright-text-md xl:text-footer-text-copyright-xl'>
-              Design and code by Alexander Forrest © 2023 • alexdev™
+              Design + code by Alexander Forrest © 2024 • alexdev™
             </div>
           </div>
         </div>

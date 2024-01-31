@@ -1,14 +1,22 @@
-import { useEffect } from "react";
-import { alexDevStore } from "../store/store";
+import { MutableRefObject, useEffect } from "react";
+import { SECTION_TYPES, alexDevStore } from "../store/store";
 import { useStore } from "zustand";
+import { redirect, useRouter } from "next/navigation";
 
 const useScrollPos = () => {
+  const router = useRouter();
+
   const store = useStore(alexDevStore);
-  const { setScrollY } = store;
+  const { setScrollY, refs, setCurrentSection } = store;
 
   useEffect(() => {
     const onScroll = () => {
-      setScrollY(window.scrollY);
+      if (window.scrollY === 0) {
+        // setCurrentSection(SECTION_TYPES.HOME);
+        // router.push("/", { shallow: true });
+      } else {
+        setScrollY(window.scrollY);
+      }
     };
 
     window.addEventListener("scroll", onScroll);

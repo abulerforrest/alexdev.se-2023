@@ -1,7 +1,15 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import "../../styles/globals.css";
-import MainFrame from "./MainFrame";
-import Top from "../components/templates/Top";
+import StoreClient from "../store/storeClient";
+import { getProjects } from "../data/getProjects";
+import { DocumentData } from "firebase/firestore";
+
+export const viewport: Viewport = {
+  themeColor: "#FBFBF7",
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alexdev.se"),
@@ -30,11 +38,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  themeColor: "#FBFBF7",
-  colorScheme: "light",
   creator: "Alexander Forrest",
   publisher: "Alexander Forrest",
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   twitter: {
     card: "summary_large_image",
@@ -44,15 +49,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const projects: DocumentData[] = await Promise.resolve(getProjects());
+
   return (
     <html lang='en'>
-      <body className=''>
-        <MainFrame />
+      <body>
+        <StoreClient projects={projects} />
         {children}
       </body>
     </html>

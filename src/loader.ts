@@ -9,5 +9,5 @@ export default function customImageLoader({
   width: string;
   quality: string;
 }) {
-  return `https://alexdev-se.web.app${src}?w=${width}&q=${quality || 75}`;
+  return `https://alexdev.se${src}?w=${width}&q=${quality || 75}`;
 }

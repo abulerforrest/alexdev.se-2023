@@ -27,7 +27,7 @@ const Logo = ({ logoStyle, href, invert, onClick }: ILogo) => {
             logoStyle === LOGOVARIATIONS.LIGHT
               ? "text-bone-white"
               : "text-retro-black"
-          } text-logo-md lg:text-logo-xl font-kabel font-bold -mb-2`}
+          } text-logo-md transition-all duration-200 lg:text-logo-xl font-kabel font-bold -mb-2`}
         >
           alexdev
         </div>

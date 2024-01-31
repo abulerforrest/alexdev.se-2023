@@ -1,6 +1,5 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { IPassRefs } from "../interfaces/refs/refs";
 import { SECTION_TYPES, alexDevStore } from "../store/store";
 import { useStore } from "zustand";
 import { scrollToSection } from "../func";
@@ -15,14 +14,19 @@ const useScrollToSection = () => {
     pathname = "home";
   }
 
+  // if (refs.showcase.current) {
+  //   (refs.showcase!.current as any).scrollTop = 0;
+  //   scrollToSection(refs.showcase);
+  // }
+
   useEffect(() => {
-    const activeRef = refs && refs[pathname as keyof IPassRefs];
+    const activeRef = refs && refs[pathname as keyof typeof refs];
     switch (pathname) {
       case "home":
         setCurrentSection(SECTION_TYPES.HOME);
         break;
-      case "projects":
-        setCurrentSection(SECTION_TYPES.PROJECTS);
+      case "showcase":
+        setCurrentSection(SECTION_TYPES.SHOWCASE);
         break;
       case "code":
         setCurrentSection(SECTION_TYPES.CODE);

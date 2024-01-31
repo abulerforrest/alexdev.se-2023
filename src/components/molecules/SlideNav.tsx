@@ -40,13 +40,13 @@ const SlideNav = (props: ISlideNav) => {
           } uppercase font-kabel font-black text-[28px] text-retro-black dark:text-bone-white`}
         >
           <Link
-            href='/projects'
+            href='/showcase'
             onClick={() => setNavOpen({ navOpen: !navOpen })}
           >
-            <div>Projects</div>
+            <div>Showcase</div>
             <div
               className={`transition-all duration-300 bg-orange-dream dark:bg-exotic-fanta group-hover:w-full h-1 rounded-full ${
-                currentSection === SECTION_TYPES.PROJECTS
+                currentSection === SECTION_TYPES.SHOWCASE
                   ? "w-full animation-delay-300 animate-slide-from-right"
                   : "w-0"
               }`}

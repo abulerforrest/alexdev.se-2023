@@ -1,4 +1,9 @@
+import { useStore } from "zustand";
+import { alexDevStore } from "../../store/store";
+
 const WelcomeText = () => {
+  const { darkMode } = useStore(alexDevStore);
+
   return (
     <>
       <span className='select-none font-bold animate-pop-up font-eurostile lg:text-2xl md:text-xl text-md px-2 text-bone-white dark:text-retro-black bg-bone-white dark:bg-bone-white bg-opacity-25 py-1 rounded-tr-md'>
@@ -6,7 +11,10 @@ const WelcomeText = () => {
         <span className='animate-pulse'>_</span>
       </span>
       <div className='uppercase mt-2 text-welcome-heading-sm md:text-welcome-heading-md lg:text-welcome-heading-xl lg:min-w-[480px] font-kabel text-bone-white dark:text-retro-black font-black'>
-        Hi👋 I&apos;m Alex. A fullstack jedi by day, composer by night
+        Hi👋 I&apos;m Alex.{" "}
+        {darkMode
+          ? `A composer by night, fullstack jedi by day`
+          : `A fullstack jedi by day, composer by night`}
       </div>
       <div className='relative my-[30px] max-w-[746px] text-welcome-text-sm md:text-welcome-text-md lg:text-welcome-text-xl text-base font-light text-bone-white dark:text-retro-black font-eurostile'>
         I&apos;m a full-stack software developer with a passion for creating

@@ -1,9 +1,9 @@
+import { useEffect, useRef } from "react";
 import { useStore } from "zustand";
+import { SECTION_TYPES, alexDevStore } from "../../store/store";
 import Logo, { LogoStyleType } from "../atoms/Logo";
 import MenuItem from "../atoms/MenuItem";
 import NavigationButton from "../atoms/NavigationButton";
-import { MutableRefObject, useEffect, useRef } from "react";
-import { ISections, SECTION_TYPES, alexDevStore } from "../../store/store";
 import SlideNav from "./SlideNav";
 
 interface INavigation {
@@ -13,14 +13,7 @@ interface INavigation {
 const Navigation = (props: INavigation) => {
   const store = useStore(alexDevStore);
   const { invertColors, logoStyle } = props;
-  const {
-    navOpen,
-    setNavOpen,
-    currentSection,
-    refs,
-    setCurrentRef,
-    setCurrentSection,
-  } = store;
+  const { navOpen, setNavOpen, currentSection, refs, hasMounted } = store;
 
   const currentRef = useRef(null);
 
@@ -62,10 +55,10 @@ const Navigation = (props: INavigation) => {
               invertColors={invertColors}
             />
             <MenuItem
-              isCurrent={currentSection === SECTION_TYPES.PROJECTS}
-              label='Projects'
+              isCurrent={currentSection === SECTION_TYPES.SHOWCASE}
+              label='Showcase'
               itemColor='#D7AE3D'
-              href='/projects'
+              href='/showcase'
               invertColors={invertColors}
             />
             <MenuItem

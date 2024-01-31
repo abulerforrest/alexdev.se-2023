@@ -5,6 +5,7 @@ import { Highlight, themes } from "prism-react-renderer";
 import { ICode } from "../../code";
 import { SiGithub } from "react-icons/si";
 import { FaRocket } from "react-icons/fa";
+import Link from "next/link";
 
 export const ILANG = {
   JS: "JS",
@@ -45,6 +46,9 @@ interface ICardCode {
   title: string;
   version?: string;
   filename?: string;
+  subline?: string;
+  launchLink?: string;
+  githubLink?: string;
 }
 
 const gradients = {
@@ -145,7 +149,7 @@ const CardCode = (props: ICardCode) => {
     <>
       <div className='flex w-full justify-center p-6'>
         <div className='dark:bg-commodore-64-grey bg-bone-white group flex flex-wrap flex-grow-0 rounded-[20px] w-[500px] min-w-fit max-w-md h-min shadow-3xl'>
-          <div>
+          <div className='flex-col w-full'>
             <div
               className={`bg-gradient-to-t ${color} flex rounded-[20px] min-w-full w-full h-[auto]`}
             >
@@ -161,22 +165,34 @@ const CardCode = (props: ICardCode) => {
               </div>
             </div>
             <div className='relative flex gap-4 -top-[1.50rem] justify-end pr-2'>
-              <button
-                style={{ boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}
-                className='select-none antialised flex items-center justify-center gap-1 max-h-[48px] text-[17px] text-retro-black dark:text-its-called-yellow font-kabel uppercase font-black bg-its-called-yellow dark:bg-retro-black hover:opacity-90 py-2 pl-4 pr-3 rounded-full'
-              >
-                GITHUB <SiGithub size={24} />
-              </button>
-              <button
-                style={{ boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}
-                className='select-none antialised flex items-center justify-center gap-1 max-h-[48px] text-[17px] text-retro-black dark:text-bone-white font-kabel uppercase font-black bg-bone-white dark:bg-retro-black hover:opacity-90 py-2 pl-4 pr-3 rounded-full'
-              >
-                LAUNCH <FaRocket color='#EEB100' size={18} />
-              </button>
+              {props.githubLink && props.githubLink !== "" && (
+                <Link href={props.githubLink} target='_blank'>
+                  <button
+                    style={{
+                      boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                    }}
+                    className='select-none antialised flex items-center justify-center gap-1 max-h-[48px] text-[17px] text-retro-black dark:text-its-called-yellow font-kabel uppercase font-black bg-its-called-yellow dark:bg-retro-black hover:opacity-95 py-2 pl-4 pr-3 rounded-full'
+                  >
+                    GITHUB <SiGithub size={24} />
+                  </button>
+                </Link>
+              )}
+              {props.launchLink && props.launchLink !== "" && (
+                <Link href={props.launchLink} target='_blank'>
+                  <button
+                    style={{
+                      boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                    }}
+                    className='select-none antialised flex items-center justify-center gap-1 max-h-[48px] text-[17px] text-retro-black dark:text-bone-white font-kabel uppercase font-black bg-bone-white dark:bg-retro-black hover:opacity-95 py-2 pl-4 pr-3 rounded-full'
+                  >
+                    LAUNCH <FaRocket color='#EEB100' size={18} />
+                  </button>
+                </Link>
+              )}
             </div>
-            <div className='duration-600 text-center z-20 mb-6 mx-12 flex flex-wrap font-eurostile rounded-lg dark:text-bone-white text-retro-black justify-center items-center'>
-              It&apos;s a step-by-step process, with each piece coming together
-              to create a cohesive whole.
+
+            <div className='pb-4 duration-600 h-max text-center z-20 mb-1 mx-12 flex flex-wrap font-eurostile rounded-lg dark:text-bone-white text-retro-black justify-center items-center'>
+              {props.subline}
             </div>
           </div>
         </div>

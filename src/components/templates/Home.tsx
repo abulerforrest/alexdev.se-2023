@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useStore } from "zustand";
 
 import Top from "../../../src/components/templates/Top";
@@ -15,15 +15,24 @@ import About from "./About";
 import Connect from "./Connect";
 import Footer from "./Footer";
 import { alexDevStore } from "../../../src/store/store";
+import dynamic from "next/dynamic";
+import { scrollToSection } from "../../func";
 
 interface IHome {}
 
 const Home = (_props: IHome) => {
-  const { darkMode, refs } = useStore(alexDevStore);
+  const { darkMode, refs, setHasMounted } = useStore(alexDevStore);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, [setHasMounted]);
 
   return (
     <main ref={refs?.home} className={`${darkMode ? "dark" : ""}`}>
-      <section className='transition-all duration-300 bg-bone-white overflow-x-hidden scroll-smooth dark:bg-retro-black'>
+      <section
+        className='
+          transition-all duration-300 bg-bone-white overflow-hidden scroll-smooth dark:bg-retro-black'
+      >
         <section>
           <Top />
         </section>
@@ -42,7 +51,7 @@ const Home = (_props: IHome) => {
         <section ref={refs?.play}>
           <Play />
         </section>
-        <section ref={refs?.projects}>
+        <section ref={refs?.showcase}>
           <Projects />
         </section>
         <section ref={refs?.code}>
@@ -62,4 +71,4 @@ const Home = (_props: IHome) => {
   );
 };
 
-export default Home;
+export default dynamic(() => Promise.resolve(Home), { ssr: false });

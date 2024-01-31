@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: { appDir: true },
+  // experimental: { appDir: true },
   swcMinify: true,
   output: "export",
   images: {
