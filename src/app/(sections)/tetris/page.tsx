@@ -1,8 +1,11 @@
+import Image from "next/image";
+
 export default function Page() {
   return (
     <div className='flex w-full justify-center items-center'>
       <div className='flex-col'>
-        <img
+        <Image
+          alt='Tetris Logo'
           src='https://firebasestorage.googleapis.com/v0/b/alexdev-se.appspot.com/o/TetrisMainLogo.png?alt=media&token=dcf00c44-3f8e-4eea-862c-2fc98932521a'
           className='object-contain w-fit h-fit animate-pop-up'
         />
