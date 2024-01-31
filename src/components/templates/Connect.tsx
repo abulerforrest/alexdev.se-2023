@@ -60,7 +60,7 @@ const Connect = () => {
             onClick={() => scrollToSection(refs?.home)}
             className={`z-50 outline-none border-2 border-b-0 border-transparent bg-bone-white dark:bg-retro-black px-4 rounded-t-[20px] ${
               scrollFullfillment &&
-              " cfixed active:border-opacity-50 active:border-retro-black"
+              "fixed active:border-opacity-50 active:border-retro-black"
             } bottom-0 flex items-center gap-2 text-retro-black dark:text-bone-white uppercase font-eurostile text-go2top-text-sm sm:text-go2top-text-sm md:text-go2top-text-md xl:text-go2top-text-xl`}
           >
             Scroll To Top <IoIosArrowUp />
