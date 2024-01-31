@@ -41,7 +41,14 @@ const Project = (props: IProject) => {
     );
     !!current && setCurrentProject(current);
     setFade(true);
-  }, [currentProject, projects, setCurrentProject, setFade]);
+  }, [
+    currentProject,
+    projects,
+    setCurrentProject,
+    setFade,
+    setCurrentSection,
+    slug,
+  ]);
   return (
     <>
       {!currentProject ? (
@@ -172,8 +179,8 @@ const Project = (props: IProject) => {
               ref={screensRef}
             >
               {currentProject?.images?.map(
-                (promoImage: { text: string; url: string }) => (
-                  <div className='pb-6'>
+                (promoImage: { text: string; url: string }, index: number) => (
+                  <div className='pb-6' key={index}>
                     <Image
                       className={`transition-all delay-75 duration-300 mb-3 ${
                         fade
