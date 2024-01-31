@@ -10,6 +10,7 @@ import SectionHeading from "../molecules/SectionHeading";
 
 import { alexDevStore } from "../../store/store";
 import { scrollToSection } from "../../func";
+import { MdEmail } from "react-icons/md";
 
 const Connect = () => {
   let scrollFullfillment: boolean = false;
@@ -36,9 +37,6 @@ const Connect = () => {
         </div>
         <div className='flex p-10 justify-center'>
           <div className='flex p-5 gap-12'>
-            <Link href='https://twitter.com/zalzachipmusic' target='_blank'>
-              <IoLogoTwitter className='text-[58px] fill-retro-black dark:fill-bone-white' />
-            </Link>
             <Link
               href='https://www.linkedin.com/in/abulerforrest'
               target='_blank'
@@ -47,6 +45,12 @@ const Connect = () => {
             </Link>
             <Link href='https://www.facebook.com/abuler' target='_blank'>
               <IoLogoFacebook className='text-[58px] fill-retro-black dark:fill-bone-white' />
+            </Link>
+            <Link href='https://twitter.com/zalzachipmusic' target='_blank'>
+              <IoLogoTwitter className='text-[58px] fill-retro-black dark:fill-bone-white' />
+            </Link>
+            <Link href='mailto:alex@alexdev.se?subject=alexdev.se&body=Hi there!'>
+              <MdEmail className='text-[58px] fill-retro-black dark:fill-bone-white' />
             </Link>
           </div>
         </div>

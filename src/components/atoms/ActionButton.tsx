@@ -12,7 +12,7 @@ const ActionButton = (props: IActionButton) => {
   const { className, text, icon, href } = props;
 
   return (
-    <Link href={href || "#"} target='_blank'>
+    <Link prefetch href={href || "#"}>
       <button className={className}>
         {text} <span>{icon}</span>
       </button>
