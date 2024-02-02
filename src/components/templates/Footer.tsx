@@ -38,7 +38,6 @@ const Footer = () => {
                 @abulerforrest
               </Link>
             </div>
-
             <div className='h-10 whitespace-nowrap flex items-center gap-2 text-footer-contact-text sm:text-footer-contact-text-sm md:text-footer-contact-text-md xl:text-footer-contact-text-xl text-bone-white'>
               <span className='w-24px h-24px'>
                 <IoMdMail className='text-[24px] fill-bone-white' />
