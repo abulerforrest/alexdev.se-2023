@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Logo, { LOGOVARIATIONS } from "../atoms/Logo";
-import { IoIosPerson, IoMdCall, IoMdMail } from "react-icons/io";
+import {
+  IoIosPerson,
+  IoLogoLinkedin,
+  IoMdCall,
+  IoMdMail,
+} from "react-icons/io";
 import { MutableRefObject } from "react";
 import { ISections, SECTION_TYPES, alexDevStore } from "../../store/store";
 import { useStore } from "zustand";
@@ -22,6 +27,18 @@ const Footer = () => {
               </span>
               Alexander Forrest
             </div>
+            <div className=' h-10 whitespace-nowrap flex items-center gap-2 text-footer-contact-text sm:text-footer-contact-text-sm md:text-footer-contact-text-md xl:text-footer-contact-text-xl text-bone-white'>
+              <span className='w-24px h-24px'>
+                <IoLogoLinkedin className='text-[25px] fill-bone-white' />
+              </span>
+              <Link
+                href='https://www.linkedin.com/in/abulerforrest'
+                target='_blank'
+              >
+                @abulerforrest
+              </Link>
+            </div>
+
             <div className='h-10 whitespace-nowrap flex items-center gap-2 text-footer-contact-text sm:text-footer-contact-text-sm md:text-footer-contact-text-md xl:text-footer-contact-text-xl text-bone-white'>
               <span className='w-24px h-24px'>
                 <IoMdMail className='text-[24px] fill-bone-white' />
